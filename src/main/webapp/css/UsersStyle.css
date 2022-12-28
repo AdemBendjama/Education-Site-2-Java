@@ -1,75 +1,79 @@
 html {
-  height: 100%;
+    height: 100%;
 }
 
 .containers {
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
 }
 
 .logo img {
-  width: 50px;
+    width: 50px;
 }
 
 .center-content {
-  margin-top: 64px;
-  display: flex;
-  height: 100%;
+    margin-top: 64px;
+    display: flex;
+    height: 100%;
 }
 
 .page-content {
-  background:url(../resources/shapelined-_JBKdviweXI-unsplash.jpg);
-  width: 100%;
-  padding: 4rem;
+    background: url(../resources/shapelined-_JBKdviweXI-unsplash.jpg);
+    width: 100%;
+    padding: 4rem;
 }
 
 /*Buttons */
 .options {
-  display: flex;
-  justify-content: end;
-  gap: 3rem;
-  padding: 0 0 2rem 0;
+    display: flex;
+    justify-content: end;
+    gap: 3rem;
+    padding: 0 0 2rem 0;
 }
 
 .options input {
-  padding: 0.8rem;
-  width: 6rem;
+    padding: 0.8rem;
+    width: 6rem;
 }
+
 .options select {
-  padding: 0.8rem;
-  width: 6.5rem;
+    padding: 0.8rem;
+    width: 6.5rem;
 }
 
 .button {
-  background: #037f39;
-  border: none;
-  padding: 10px 20px 10px 20px;
-  border-bottom: 3px solid #037334;
-  border-radius: 3px;
-  color: #f2f7ff;
+    background: #037f39;
+    border: none;
+    padding: 10px 20px 10px 20px;
+    border-bottom: 3px solid #037334;
+    border-radius: 3px;
+    color: #f2f7ff;
 }
+
 .button:hover {
-  background: #038b3e;
-  color: #fff;
-  cursor: pointer;
+    background: #038b3e;
+    color: #fff;
+    cursor: pointer;
 }
+
 .button:focus {
-  outline: none;
+    outline: none;
 }
 
 
 /* List Of Users Table*/
 
 .student-module table thead tr td,
-.student-module table tbody tr td{
+.student-module table tbody tr td {
     width: 190px;
 }
 
-table tbody a{
-  color: #00b24d;
+table tbody a {
+    color: #00b24d;
 }
-table tbody a:hover{
-  color: #00e362;
+
+table tbody a:hover {
+    color: #00e362;
 }
