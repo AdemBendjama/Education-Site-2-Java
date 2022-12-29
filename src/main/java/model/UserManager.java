@@ -52,9 +52,24 @@ public class UserManager {
     }
 
     //
+    public boolean checkCredentials(String email, String password) {
+        //
+        try {
+            preparedStatement = connection.prepareStatement("select * from users where user_email =? && user_password = ?");
+            preparedStatement.setString(1, email);
+            preparedStatement.setString(2, password);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            return resultSet.next();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    //
     public User getUser(String email) {
         //
-        User user = new User("", "", "", "");
+        User user = null;
         try {
             preparedStatement = connection.prepareStatement("select * from users where user_email=?");
             preparedStatement.setString(1, email);
