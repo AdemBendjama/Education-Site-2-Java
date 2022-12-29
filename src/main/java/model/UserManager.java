@@ -85,6 +85,23 @@ public class UserManager {
     }
 
     //
+    public String getRank(String email) {
+        //
+        String rank = null;
+        try {
+            preparedStatement = connection.prepareStatement("select user_rank from users where user_email=?");
+            preparedStatement.setString(1, email);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            resultSet.next();
+            rank = resultSet.getString("user_rank");
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return rank;
+    }
+
+    //
     public List<User> getUsers() {
         //
         List<User> users = new ArrayList<>();
