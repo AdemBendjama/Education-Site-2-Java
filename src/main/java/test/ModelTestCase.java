@@ -1,14 +1,13 @@
 package test;
 
-import model.AdminManager;
-import model.User;
-import model.UserManager;
+import model.*;
 import org.junit.jupiter.api.*;
 
 public class ModelTestCase {
     //
     private static final UserManager userManager = new UserManager();
     private static final AdminManager adminManager = new AdminManager();
+    private static final LoginAuthenticator loginAuthenticator = new LoginAuthenticator();
 
     @Nested
     @DisplayName("TESTS")
@@ -31,6 +30,65 @@ public class ModelTestCase {
 
             userManager.deleteUser("dawnson@gmail.com");
             userManager.deleteUser("tracymcgrady@gmail.com");
+        }
+
+        @Nested
+        @DisplayName("LoginAuthenticator Class")
+        class LoginAuthenticator {
+
+            @Nested
+            @DisplayName("authenticate() Method")
+            class authenticate {
+
+                @Tag("database")
+                @Test
+                void authenticateWithValidAdminAccount() {
+                    Admin admin = new Admin("adembendjama22@gmail.com", "Adem Bendjama", "ademben");
+
+
+                    String privilegeLVL = loginAuthenticator.authenticate(admin.getEmail(), admin.getPassword());
+                    Assertions.assertEquals("admin", privilegeLVL);
+                }
+
+
+                @Tag("database")
+                @Test
+                void authenticateWithValidTeacherAccount() {
+                    User user = new User("testcase@gmail.com", "testcase", "testcase", "teacher");
+
+                    userManager.addUser(user);
+
+                    String privilegeLVL = loginAuthenticator.authenticate(user.getEmail(), user.getPassword());
+                    Assertions.assertEquals("teacher", privilegeLVL);
+
+                    userManager.deleteUser(user.getEmail());
+
+                }
+
+                @Tag("database")
+                @Test
+                void authenticateWithValidStudentAccount() {
+                    User user = new User("testcase@gmail.com", "testcase", "testcase", "student");
+
+                    userManager.addUser(user);
+
+                    String privilegeLVL = loginAuthenticator.authenticate(user.getEmail(), user.getPassword());
+                    Assertions.assertEquals("student", privilegeLVL);
+
+                    userManager.deleteUser(user.getEmail());
+                }
+
+                @Tag("database")
+                @Test
+                void authenticateWithUnvalidAccount() {
+                    User user = new User("unvalidcredential", "sqfqrgdf", "qsd", "sdq");
+
+
+                    String privilegeLVL = loginAuthenticator.authenticate(user.getEmail(), user.getPassword());
+                    Assertions.assertNull(privilegeLVL);
+
+                }
+            }
         }
 
         @Nested
@@ -210,7 +268,7 @@ public class ModelTestCase {
                 @Test
                 void enterCorrectAdminEmailPassword() {
                     //
-                    Assertions.assertTrue(adminManager.checkCredentials("stevenking@gmail.com", "stevio800"));
+                    Assertions.assertTrue(adminManager.checkCredentials("adembendjama22@gmail.com", "ademben"));
                 }
 
                 //
