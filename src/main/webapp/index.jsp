@@ -26,7 +26,7 @@
     <div class="Con1">
         <div class="login-form-wrap">
 
-            <form class="login-form" name="login" action="LoginServlet" method="post">
+            <form class="login-form" name="login" action="login" method="post">
 
                 <span class="login-form-title">E-Learning</span>
 
