@@ -1,4 +1,6 @@
-<%@ page contentType="text/html;charset=UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8" %>
+<!DOCTYPE html>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,10 +8,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <title>E-learning</title>
 
-    <link rel="stylesheet" href="index.css"/>
-    <link rel="stylesheet" href="css/footer.css"/>
-    <link rel="stylesheet" href="indexLoginForm.css">
-    <link rel="icon" href="resources/Logo-04-removebg-preview.png">
+    <link rel="stylesheet" href="../index.css"/>
+    <link rel="stylesheet" href="../css/footer.css"/>
+    <link rel="stylesheet" href="../indexLoginForm.css">
+    <link rel="icon" href="../resources/Logo-04-removebg-preview.png">
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"/>
     <link rel="preconnect" href="https://fonts.googleapis.com"/>
@@ -49,23 +51,6 @@
         </div>
     </div>
 </div>
-<div class="footer">
-    <div>
-        <p>© 2022 e-learning. All rights reserved.</p>
-        <p>
-            Université Constantine 2 Abdelhamid Mehri <br/>
-            Nouvelle ville Ali Mendjeli BP : 67A, Constantine <br/>
-            Algérie La Nouvelle Ville Ali Mendjeli, 25016
-        </p>
-    </div>
-    <img src="resources/Logo-04-removebg-preview.png" alt="image of the logo of e-learning"/>
-    <div>
-        <p>Phone :031 77 50 27</p>
-        <p>Contact webmaster@univ-constantine2</p>
-        <a href="WEB-INF/Admin/AdminMain.jsp">Admin</a>
-        <a href="WEB-INF/Teacher/TeacherMain.jsp">Teacher</a>
-        <a href="WEB-INF/Student/StudentMain.jsp">Student</a>
-    </div>
-</div>
+
 </body>
 </html>
