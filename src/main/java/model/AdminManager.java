@@ -52,4 +52,22 @@ public class AdminManager {
             return false;
         }
     }
+
+    //
+    public Admin getAdmin(String email) {
+        //
+        Admin admin = null;
+        try {
+            preparedStatement = connection.prepareStatement("select * from admins where admin_email=?");
+            preparedStatement.setString(1, email);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            resultSet.next();
+            admin = new Admin(resultSet.getString(1), resultSet.getString(2),
+                    resultSet.getString(3));
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return admin;
+    }
 }
