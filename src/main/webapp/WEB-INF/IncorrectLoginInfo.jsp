@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../index.css"/>
     <link rel="stylesheet" href="../css/footer.css"/>
     <link rel="stylesheet" href="../indexLoginForm.css">
+    <link rel="stylesheet" href="../css/IncorrectLoginInfo.css">
     <link rel="icon" href="../resources/Logo-04-removebg-preview.png">
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"/>
@@ -44,9 +45,10 @@
 
                 <input class="login-button" id="button" type="submit" value="Login"/>
 
+                <div class="error-msg">Wrong Login Credentials !</div>
+
             </form>
 
-            <div><h3>Wrong Login Credentials !</h3></div>
 
         </div>
     </div>
