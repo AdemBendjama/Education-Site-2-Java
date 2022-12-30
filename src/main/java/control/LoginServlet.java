@@ -100,35 +100,35 @@ public class LoginServlet extends HttpServlet {
                     dispatcher = request.getRequestDispatcher("/WEB-INF/Student/StudentMain.jsp");
                     dispatcher.forward(request, response);
                 }
-                default -> {
-                    // Wrong Login info result in a error msg and redirect to login page
-                    PrintWriter writer = response.getWriter();
-                    dispatcher = request.getRequestDispatcher("/WEB-INF/loginPage.jsp");
-                    dispatcher.include(request, response);
-                    writer.print("""
-                            <div><h3>Wrong Login Credentials !</h3></div>
-                            <div class="footer">
-                                <div>
-                                    <p>© 2022 e-learning. All rights reserved.</p>
-                                    <p>
-                                        Université Constantine 2 Abdelhamid Mehri <br/>
-                                        Nouvelle ville Ali Mendjeli BP : 67A, Constantine <br/>
-                                        Algérie La Nouvelle Ville Ali Mendjeli, 25016
-                                    </p>
-                                </div>
-                                <img src="resources/Logo-04-removebg-preview.png" alt="image of the logo of e-learning"/>
-                                <div>
-                                    <p>Phone :031 77 50 27</p>
-                                    <p>Contact webmaster@univ-constantine2</p>
-                                    <a href="WEB-INF/Admin/AdminMain.jsp">Admin</a>
-                                    <a href="WEB-INF/Teacher/TeacherMain.jsp">Teacher</a>
-                                    <a href="WEB-INF/Student/StudentMain.jsp">Student</a>
-                                </div>
-                            </div>""");
-                }
+
             }
 
-
+        } else {
+            // Wrong Login info result in a error msg and redirect to login page
+            PrintWriter writer = response.getWriter();
+            dispatcher = request.getRequestDispatcher("/WEB-INF/loginPage.jsp");
+            dispatcher.include(request, response);
+            writer.print("""
+                    <div><h3>Wrong Login Credentials !</h3></div>
+                    <div class="footer">
+                        <div>
+                            <p>© 2022 e-learning. All rights reserved.</p>
+                            <p>
+                                Université Constantine 2 Abdelhamid Mehri <br/>
+                                Nouvelle ville Ali Mendjeli BP : 67A, Constantine <br/>
+                                Algérie La Nouvelle Ville Ali Mendjeli, 25016
+                            </p>
+                        </div>
+                        <img src="resources/Logo-04-removebg-preview.png" alt="image of the logo of e-learning"/>
+                        <div>
+                            <p>Phone :031 77 50 27</p>
+                            <p>Contact webmaster@univ-constantine2</p>
+                            <a href="WEB-INF/Admin/AdminMain.jsp">Admin</a>
+                            <a href="WEB-INF/Teacher/TeacherMain.jsp">Teacher</a>
+                            <a href="WEB-INF/Student/StudentMain.jsp">Student</a>
+                        </div>
+                    </div>""");
         }
     }
 }
+
