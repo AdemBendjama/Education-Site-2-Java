@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,7 +21,7 @@
 <div class="container">
     <div class="Con1">
         <h1>Welcome To <span>E-Learning</span></h1>
-        <h3>Université Constantine 2</h3>
+        <h3>University Of Constantine 2</h3>
         <img class="logo1" src="../resources/Logo-04-removebg-preview.png" alt="image of the logo of e-learning"/>
     </div>
     <div class="Con1">

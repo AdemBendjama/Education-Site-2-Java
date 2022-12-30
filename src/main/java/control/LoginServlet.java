@@ -49,7 +49,7 @@ public class LoginServlet extends HttpServlet {
 
         } else {
             //
-            dispatcher = request.getRequestDispatcher("/WEB-INF/loginPage.jsp");
+            dispatcher = request.getRequestDispatcher("index.jsp");
             dispatcher.include(request, response);
 
         }
