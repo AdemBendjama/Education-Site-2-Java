@@ -8,18 +8,17 @@ public class User {
     private String username;
     private String rank;
 
-    public User(String email, String username,String password , String rank) {
+    public User(String email, String username, String password, String rank) {
         this.email = email;
         this.username = username;
         this.password = password;
         this.rank = rank;
     }
 
-    
 
     @Override
     public String toString() {
-        return   "Email  [" + email +"],  Username  [" + username + "],  Password  [" + password +"],  Rank  [" + rank +"]";
+        return "Email  [" + email + "],  Username  [" + username + "],  Password  [" + password + "],  Rank  [" + rank + "]";
     }
 
     public String getEmail() {
