@@ -8,38 +8,39 @@ import java.sql.SQLException;
 
 @SuppressWarnings("FieldCanBeLocal")
 public class AdminManager {
-    //
-    private Connection connection;
-    private PreparedStatement preparedStatement;
     private final String url = "jdbc:mysql://localhost:3306/TQL_APP_BD";
     private final String root = "root";
     private final String password = "password";
+    //
+    private Connection connection;
+    private PreparedStatement preparedStatement;
 
     //
     public AdminManager() {
         //
         try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
             this.connection = DriverManager.getConnection(url, root, password);
-        } catch (SQLException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
-        
+
     }
 
     //
-    public boolean testConnection(){
+    public boolean testConnection() {
         //
         try {
             DriverManager.getConnection(url, root, password);
             return true;
         } catch (SQLException e) {
             e.printStackTrace();
-            return false ;
+            return false;
         }
     }
 
     //
-    public boolean checkCredentials(String email,String password){
+    public boolean checkCredentials(String email, String password) {
         //
         try {
             preparedStatement = connection.prepareStatement("select * from admins where admin_email =? && admin_password = ?");
