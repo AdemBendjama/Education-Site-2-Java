@@ -116,11 +116,11 @@
 </div>
 <div class="footer">
     <div>
-        <p>© 2022 e-learning. All rights reserved.</p>
+        <p>&copy; 2022 e-learning. All rights reserved.</p>
         <p>
-            Université Constantine 2 Abdelhamid Mehri <br/>
+            University Of Constantine 2 Abdelhamid Mehri <br/>
             Nouvelle ville Ali Mendjeli BP : 67A, Constantine <br/>
-            Algérie La Nouvelle Ville Ali Mendjeli, 25016
+            Algerie La Nouvelle Ville Ali Mendjeli, 25016
         </p>
     </div>
     <img src="../../../resources/Logo-04-removebg-preview.png" alt="University Logo">
