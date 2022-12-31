@@ -50,7 +50,7 @@
     <div class="center-content">
         <div id="sidebar">
             <header>
-                Menu
+                <a>Menu</a>
             </header>
             <ul class="nav">
                 <li>
