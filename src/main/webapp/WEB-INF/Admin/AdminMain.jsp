@@ -100,7 +100,14 @@
                 </tr>
                 </thead>
                 <tbody>
-
+                <c:forEach var="i" begin="0" end="${listOfUsers.size()-1}" step="1">
+                <tr>
+                    <td><c:out value="${listOfUsers[i].username}"  /></td>
+                    <td><c:out value="${listOfUsers[i].email}"  /></td>
+                    <td><c:out value="${listOfUsers[i].password}"  /></td>
+                    <td><c:out value="${listOfUsers[i].rank}"  /></td>
+                </tr>
+                </c:forEach>
                 </tbody>
             </table>
 
