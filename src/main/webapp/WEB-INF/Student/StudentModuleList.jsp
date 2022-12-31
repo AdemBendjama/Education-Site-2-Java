@@ -28,7 +28,7 @@
         <nav>
             <ul>
                 <li>
-                    <a href="../../index.jsp">
+                    <a href="./Logout">
                         Log Out
                     </a>
                 </li>

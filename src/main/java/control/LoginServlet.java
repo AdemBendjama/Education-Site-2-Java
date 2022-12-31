@@ -20,7 +20,7 @@ import java.util.List;
 public class LoginServlet extends HttpServlet {
     //
     @Serial
-    private static final long serialVersionUID = 102831973239L;
+    private static final long serialVersionUID = 102831588973239L;
 
     public LoginServlet() {
         super();

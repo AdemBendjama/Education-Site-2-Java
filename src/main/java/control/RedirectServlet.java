@@ -12,7 +12,7 @@ import java.io.Serial;
 public class RedirectServlet extends HttpServlet {
     //
     @Serial
-    private static final long serialVersionUID = 102831973239L;
+    private static final long serialVersionUID = 102831978573239L;
 
     public RedirectServlet() {
         super();

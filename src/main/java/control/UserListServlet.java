@@ -14,7 +14,7 @@ import java.util.List;
 public class UserListServlet extends HttpServlet {
     //
     @Serial
-    private static final long serialVersionUID = 10283984239L;
+    private static final long serialVersionUID = 102839875784239L;
 
     public UserListServlet() {
         super();
