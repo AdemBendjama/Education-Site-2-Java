@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
-<%@ taglib   uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page isELIgnored="false" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,7 +29,7 @@
     <div class="Navbar">
 
         <div class="logo">
-            <a href="AdminMain.jsp"><img src="../../resources/Logo-04-removebg-preview.png" alt="logo"/></a>
+            <a href="./redirect"><img src="../../resources/Logo-04-removebg-preview.png" alt="logo"/></a>
         </div>
 
         <nav>
@@ -41,8 +41,8 @@
                 </li>
                 <li>
                     <img src="../../resources/admin-24.png" alt="profile-pic grey icon"/>
-                    <a href="AdminMain.jsp">
-                        <c:out value="${admin.username}" />
+                    <a href="./redirect">
+                        <c:out value="${admin.username}"/>
                     </a>
                 </li>
             </ul>
@@ -54,7 +54,7 @@
 
         <div id="sidebar">
             <header>
-                <a href="#">Menu</a>
+                Menu
             </header>
             <ul class="nav">
                 <li>

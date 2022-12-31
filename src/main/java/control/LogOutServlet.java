@@ -20,7 +20,7 @@ public class LogOutServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //
-        RequestDispatcher dispatcher ;
+        RequestDispatcher dispatcher;
         HttpSession session = request.getSession(false);
 
         // Remove session Attributes and invalidate it
@@ -42,8 +42,10 @@ public class LogOutServlet extends HttpServlet {
         }
 
 
-
         //
+        session = request.getSession();
+        session.setAttribute("session", null);
+
         dispatcher = request.getRequestDispatcher("index.jsp");
         dispatcher.include(request, response);
 

@@ -25,6 +25,7 @@ public class LoginServlet extends HttpServlet {
     public LoginServlet() {
         super();
     }
+
     //
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -35,21 +36,29 @@ public class LoginServlet extends HttpServlet {
 
         if (session.getAttribute("admin") != null) {
             //
+            session.setAttribute("session", "admin");
+
             UserListServlet userListServlet = new UserListServlet();
-            userListServlet.doGet(request,response);
+            userListServlet.doGet(request, response);
 
         } else if (session.getAttribute("teacher") != null) {
             //
+            session.setAttribute("session", "teacher");
+
             dispatcher = request.getRequestDispatcher("/WEB-INF/Teacher/TeacherMain.jsp");
             dispatcher.include(request, response);
 
         } else if (session.getAttribute("student") != null) {
             //
+            session.setAttribute("session", "student");
+
             dispatcher = request.getRequestDispatcher("/WEB-INF/Student/StudentMain.jsp");
             dispatcher.include(request, response);
 
         } else {
             //
+            session.setAttribute("session", null);
+
             dispatcher = request.getRequestDispatcher("index.jsp");
             dispatcher.include(request, response);
 
@@ -60,6 +69,7 @@ public class LoginServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //
+        HttpSession session = request.getSession();
         RequestDispatcher dispatcher;
         LoginAuthenticator loginAuthenticator = new LoginAuthenticator();
         AdminManager adminManager = new AdminManager();
@@ -74,21 +84,22 @@ public class LoginServlet extends HttpServlet {
         String accountPrivilege = loginAuthenticator.authenticate(email, password);
 
         if (accountPrivilege != null) {
-            //
-            HttpSession session = request.getSession();
+
 
             switch (accountPrivilege) {
                 case "admin" -> {
                     // Admin Account
                     session.setAttribute("admin", adminManager.getAdmin(email));
+                    session.setAttribute("session", "admin");
 
                     // Forwards to admin homepage
                     UserListServlet userListServlet = new UserListServlet();
-                    userListServlet.doGet(request,response);
+                    userListServlet.doGet(request, response);
                 }
                 case "teacher" -> {
                     // Teacher Account
                     session.setAttribute("teacher", userManager.getUser(email));
+                    session.setAttribute("session", "teacher");
 
                     // Forwards to teacher homepage
                     dispatcher = request.getRequestDispatcher("/WEB-INF/Teacher/TeacherMain.jsp");
@@ -97,6 +108,7 @@ public class LoginServlet extends HttpServlet {
                 case "student" -> {
                     // Student Account
                     session.setAttribute("student", userManager.getUser(email));
+                    session.setAttribute("session", "student");
 
                     // Forwards to student homepage
                     dispatcher = request.getRequestDispatcher("/WEB-INF/Student/StudentMain.jsp");
@@ -107,6 +119,8 @@ public class LoginServlet extends HttpServlet {
 
         } else {
             // Wrong Login info result in a error msg and redirect to login page
+            session.setAttribute("session", null);
+
             dispatcher = request.getRequestDispatcher("/WEB-INF/IncorrectLoginInfo.jsp");
             dispatcher.include(request, response);
         }

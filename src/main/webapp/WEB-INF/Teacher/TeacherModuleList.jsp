@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
-<%@ taglib   uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page isELIgnored="false" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,7 +26,7 @@
 <div class="containers">
     <div class="Navbar">
         <div class="logo">
-            <a href="TeacherMain.jsp"><img src="../../resources/Logo-04-removebg-preview.png" alt="logo"/></a>
+            <a href="./redirect"><img src="../../resources/Logo-04-removebg-preview.png" alt="logo"></a>
         </div>
         <nav>
             <ul>
@@ -36,9 +36,9 @@
                     </a>
                 </li>
                 <li>
-                    <img src="../../resources/teacher-24.png" alt="profile-pic grey icon"/>
-                    <a href="TeacherMain.jsp">
-                        Meriem Belguidoum
+                    <img src="../../resources/teacher-24.png" alt="profile-pic grey icon">
+                    <a href="./redirect">
+                        <c:out value="${teacher.username}"/>
                     </a>
                 </li>
             </ul>
@@ -48,7 +48,7 @@
     <div class="center-content">
         <div id="sidebar">
             <header>
-                <a href="#">Menu</a>
+                Menu
             </header>
             <ul class="nav">
                 <li>

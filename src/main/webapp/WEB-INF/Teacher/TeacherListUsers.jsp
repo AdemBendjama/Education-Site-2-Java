@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
-<%@ taglib   uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page isELIgnored="false" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,7 +26,7 @@
 <div class="containers">
     <div class="Navbar">
         <div class="logo">
-            <a href="TeacherMain.jsp"><img src="../../resources/Logo-04-removebg-preview.png" alt="logo"/></a>
+            <a href="./redirect"><img src="../../resources/Logo-04-removebg-preview.png" alt="logo"></a>
         </div>
         <nav>
             <ul>
@@ -36,9 +36,9 @@
                     </a>
                 </li>
                 <li>
-                    <img src="../../resources/teacher-24.png" alt="profile-pic grey icon"/>
-                    <a href="TeacherMain.jsp">
-                        Meriem Belguidoum
+                    <img src="../../resources/teacher-24.png" alt="profile-pic grey icon">
+                    <a href="./redirect">
+                        <c:out value="${teacher.username}"/>
                     </a>
                 </li>
             </ul>
@@ -48,7 +48,7 @@
     <div class="center-content">
         <div id="sidebar">
             <header>
-                <a href="#">Menu</a>
+                Menu
             </header>
             <ul class="nav">
                 <li>
@@ -59,7 +59,7 @@
                 </li>
                 <li>
                     <img src="../../resources/list-2-24.png" alt="list-users grey icon"/>
-                    <a href="TeacherListUsers.jsp">
+                    <a href="./listUsers">
                         List Students
                     </a>
                 </li>
@@ -88,11 +88,11 @@
                 </thead>
                 <tbody>
                 <c:forEach var="i" begin="0" end="${listOfUsers.size()-1}" step="1">
-                    <c:if test="${listOfUsers[i].rank=='student'}" >
-                    <tr>
-                        <td><c:out value="${listOfUsers[i].username}"/></td>
-                        <td><c:out value="${listOfUsers[i].email}"/></td>
-                    </tr>
+                    <c:if test="${listOfUsers[i].rank=='student'}">
+                        <tr>
+                            <td><c:out value="${listOfUsers[i].username}"/></td>
+                            <td><c:out value="${listOfUsers[i].email}"/></td>
+                        </tr>
                     </c:if>
                 </c:forEach>
                 </tbody>

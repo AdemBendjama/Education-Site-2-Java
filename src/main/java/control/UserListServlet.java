@@ -19,6 +19,7 @@ public class UserListServlet extends HttpServlet {
     public UserListServlet() {
         super();
     }
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //
@@ -29,7 +30,7 @@ public class UserListServlet extends HttpServlet {
         if (session.getAttribute("admin") != null) {
             //
             List<User> listOfUsers = userManager.getUsers();
-            session.setAttribute("listOfUsers",listOfUsers);
+            session.setAttribute("listOfUsers", listOfUsers);
 
             dispatcher = request.getRequestDispatcher("/WEB-INF/Admin/AdminMain.jsp");
             dispatcher.forward(request, response);
@@ -37,7 +38,7 @@ public class UserListServlet extends HttpServlet {
         } else if (session.getAttribute("teacher") != null) {
             //
             List<User> listOfUsers = userManager.getUsers();
-            session.setAttribute("listOfUsers",listOfUsers);
+            session.setAttribute("listOfUsers", listOfUsers);
 
             dispatcher = request.getRequestDispatcher("/WEB-INF/Teacher/TeacherListUsers.jsp");
             dispatcher.forward(request, response);

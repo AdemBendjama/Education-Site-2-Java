@@ -17,6 +17,7 @@ public class RedirectServlet extends HttpServlet {
     public RedirectServlet() {
         super();
     }
+
     //
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -28,16 +29,21 @@ public class RedirectServlet extends HttpServlet {
         if (session.getAttribute("admin") != null) {
             //
             UserListServlet userListServlet = new UserListServlet();
-            userListServlet.doGet(request,response);
+            userListServlet.doGet(request, response);
 
         } else if (session.getAttribute("teacher") != null) {
             //
-            UserListServlet userListServlet = new UserListServlet();
-            userListServlet.doGet(request,response);
+            dispatcher = request.getRequestDispatcher("/WEB-INF/Teacher/TeacherMain.jsp");
+            dispatcher.include(request, response);
 
         } else if (session.getAttribute("student") != null) {
             //
             dispatcher = request.getRequestDispatcher("/WEB-INF/Student/StudentMain.jsp");
+            dispatcher.include(request, response);
+
+        } else {
+            //
+            dispatcher = request.getRequestDispatcher("index.jsp");
             dispatcher.include(request, response);
 
         }
