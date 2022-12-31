@@ -2,6 +2,7 @@ package control;
 
 import model.AdminManager;
 import model.LoginAuthenticator;
+import model.User;
 import model.UserManager;
 
 import javax.servlet.RequestDispatcher;
@@ -13,8 +14,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.Serial;
+import java.util.List;
 
-@WebServlet("/login")
+@WebServlet(name = "LoginServlet", value = "/login")
 public class LoginServlet extends HttpServlet {
     //
     @Serial
@@ -24,22 +26,22 @@ public class LoginServlet extends HttpServlet {
         super();
     }
     //
-
-
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //
         RequestDispatcher dispatcher;
         HttpSession session = request.getSession();
+        UserManager userManager = new UserManager();
 
         if (session.getAttribute("admin") != null) {
             //
-            dispatcher = request.getRequestDispatcher("/WEB-INF/Admin/AdminMain.jsp");
-            dispatcher.include(request, response);
+            UserListServlet userListServlet = new UserListServlet();
+            userListServlet.doGet(request,response);
 
         } else if (session.getAttribute("teacher") != null) {
             //
-            dispatcher = request.getRequestDispatcher("/WEB-INF/Teacher/TeacherMain.jsp");
-            dispatcher.include(request, response);
+            UserListServlet userListServlet = new UserListServlet();
+            userListServlet.doGet(request,response);
 
         } else if (session.getAttribute("student") != null) {
             //
@@ -55,6 +57,7 @@ public class LoginServlet extends HttpServlet {
     }
 
     //
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //
         RequestDispatcher dispatcher;
@@ -80,16 +83,16 @@ public class LoginServlet extends HttpServlet {
                     session.setAttribute("admin", adminManager.getAdmin(email));
 
                     // Forwards to admin homepage
-                    dispatcher = request.getRequestDispatcher("/WEB-INF/Admin/AdminMain.jsp");
-                    dispatcher.forward(request, response);
+                    UserListServlet userListServlet = new UserListServlet();
+                    userListServlet.doGet(request,response);
                 }
                 case "teacher": {
                     // Teacher Account
                     session.setAttribute("teacher", userManager.getUser(email));
 
-                    // Forwards to teacher homepage
-                    dispatcher = request.getRequestDispatcher("/WEB-INF/Teacher/TeacherMain.jsp");
-                    dispatcher.forward(request, response);
+                    // Forwards to admin homepage
+                    UserListServlet userListServlet = new UserListServlet();
+                    userListServlet.doGet(request,response);
                 }
                 case "student": {
                     // Student Account
