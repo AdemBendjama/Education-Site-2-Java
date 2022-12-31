@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.io.Serial;
 
 @WebServlet("/login")
@@ -76,7 +75,7 @@ public class LoginServlet extends HttpServlet {
             HttpSession session = request.getSession();
 
             switch (accountPrivilege) {
-                case "admin" -> {
+                case "admin": {
                     // Admin Account
                     session.setAttribute("admin", adminManager.getAdmin(email));
 
@@ -84,7 +83,7 @@ public class LoginServlet extends HttpServlet {
                     dispatcher = request.getRequestDispatcher("/WEB-INF/Admin/AdminMain.jsp");
                     dispatcher.forward(request, response);
                 }
-                case "teacher" -> {
+                case "teacher": {
                     // Teacher Account
                     session.setAttribute("teacher", userManager.getUser(email));
 
@@ -92,7 +91,7 @@ public class LoginServlet extends HttpServlet {
                     dispatcher = request.getRequestDispatcher("/WEB-INF/Teacher/TeacherMain.jsp");
                     dispatcher.forward(request, response);
                 }
-                case "student" -> {
+                case "student": {
                     // Student Account
                     session.setAttribute("student", userManager.getUser(email));
 
