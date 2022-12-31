@@ -66,9 +66,6 @@
     <div>
         <p>Phone :031 77 50 27</p>
         <p>Contact webmaster@univ-constantine2</p>
-        <a href="WEB-INF/Admin/AdminMain.jsp">Admin</a>
-        <a href="WEB-INF/Teacher/TeacherMain.jsp">Teacher</a>
-        <a href="WEB-INF/Student/StudentMain.jsp">Student</a>
     </div>
 </div>
 </body>
