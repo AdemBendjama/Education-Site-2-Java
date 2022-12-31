@@ -39,7 +39,7 @@ public class UserListServlet extends HttpServlet {
             List<User> listOfUsers = userManager.getUsers();
             session.setAttribute("listOfUsers",listOfUsers);
 
-            dispatcher = request.getRequestDispatcher("/WEB-INF/Admin/AdminMain.jsp");
+            dispatcher = request.getRequestDispatcher("/WEB-INF/Teacher/TeacherListUsers.jsp");
             dispatcher.forward(request, response);
 
         } else if (session.getAttribute("student") != null) {

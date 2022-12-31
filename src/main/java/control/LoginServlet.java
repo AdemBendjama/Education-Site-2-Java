@@ -40,8 +40,8 @@ public class LoginServlet extends HttpServlet {
 
         } else if (session.getAttribute("teacher") != null) {
             //
-            UserListServlet userListServlet = new UserListServlet();
-            userListServlet.doGet(request,response);
+            dispatcher = request.getRequestDispatcher("/WEB-INF/Teacher/TeacherMain.jsp");
+            dispatcher.include(request, response);
 
         } else if (session.getAttribute("student") != null) {
             //
@@ -78,7 +78,7 @@ public class LoginServlet extends HttpServlet {
             HttpSession session = request.getSession();
 
             switch (accountPrivilege) {
-                case "admin": {
+                case "admin" -> {
                     // Admin Account
                     session.setAttribute("admin", adminManager.getAdmin(email));
 
@@ -86,15 +86,15 @@ public class LoginServlet extends HttpServlet {
                     UserListServlet userListServlet = new UserListServlet();
                     userListServlet.doGet(request,response);
                 }
-                case "teacher": {
+                case "teacher" -> {
                     // Teacher Account
                     session.setAttribute("teacher", userManager.getUser(email));
 
-                    // Forwards to admin homepage
-                    UserListServlet userListServlet = new UserListServlet();
-                    userListServlet.doGet(request,response);
+                    // Forwards to teacher homepage
+                    dispatcher = request.getRequestDispatcher("/WEB-INF/Teacher/TeacherMain.jsp");
+                    dispatcher.forward(request, response);
                 }
-                case "student": {
+                case "student" -> {
                     // Student Account
                     session.setAttribute("student", userManager.getUser(email));
 

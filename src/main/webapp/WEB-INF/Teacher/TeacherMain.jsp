@@ -58,7 +58,7 @@
                 </li>
                 <li>
                     <img src="../../resources/list-2-24.png" alt="list-users grey icon">
-                    <a href="TeacherListUsers.jsp">
+                    <a href="./listUsers">
                         List Students
                     </a>
                 </li>

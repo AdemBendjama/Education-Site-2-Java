@@ -1,4 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
+<%@ taglib   uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page isELIgnored="false" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -85,7 +87,14 @@
                 </tr>
                 </thead>
                 <tbody>
-
+                <c:forEach var="i" begin="0" end="${listOfUsers.size()-1}" step="1">
+                    <c:if test="${listOfUsers[i].rank=='student'}" >
+                    <tr>
+                        <td><c:out value="${listOfUsers[i].username}"/></td>
+                        <td><c:out value="${listOfUsers[i].email}"/></td>
+                    </tr>
+                    </c:if>
+                </c:forEach>
                 </tbody>
             </table>
         </div>
