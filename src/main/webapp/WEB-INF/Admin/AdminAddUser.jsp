@@ -1,4 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
+<%@ taglib   uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page isELIgnored="false" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,7 +42,7 @@
                 <li>
                     <img src="../../resources/admin-24.png" alt="profile-pic grey icon"/>
                     <a href="AdminMain.jsp">
-                        Web Master
+                        <c:out value="${admin.username}" />
                     </a>
                 </li>
             </ul>
