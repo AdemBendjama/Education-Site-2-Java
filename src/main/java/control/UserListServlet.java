@@ -35,23 +35,10 @@ public class UserListServlet extends HttpServlet {
             dispatcher = request.getRequestDispatcher("/WEB-INF/Admin/AdminMain.jsp");
             dispatcher.forward(request, response);
 
-        } else if (session.getAttribute("teacher") != null) {
-            //
-            List<User> listOfUsers = userManager.getUsers();
-            session.setAttribute("listOfUsers", listOfUsers);
-
-            dispatcher = request.getRequestDispatcher("/WEB-INF/Teacher/TeacherListUsers.jsp");
-            dispatcher.forward(request, response);
-
-        } else if (session.getAttribute("student") != null) {
-            //
-            dispatcher = request.getRequestDispatcher("/WEB-INF/Student/StudentMain.jsp");
-            dispatcher.include(request, response);
-
         } else {
             //
-            dispatcher = request.getRequestDispatcher("index.jsp");
-            dispatcher.include(request, response);
+            LoginServlet loginServlet = new LoginServlet();
+            loginServlet.doGet(request,response);
 
         }
     }
