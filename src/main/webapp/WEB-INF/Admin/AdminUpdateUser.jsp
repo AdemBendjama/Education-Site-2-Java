@@ -112,7 +112,7 @@
                     </li>
                     <li>
                         <label for="update-position">New Position</label>
-                        <input type="text" name="newPosition" id="update-position" pattern="Teacher|Admin"
+                        <input type="text" name="newPosition" id="update-position" pattern="teacher|student"
                                maxlength="100" spellcheck='false'/>
                         <span>Teacher or Student [ Optional ]</span>
                     </li>

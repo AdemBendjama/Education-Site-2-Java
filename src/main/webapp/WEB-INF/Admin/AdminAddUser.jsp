@@ -85,7 +85,7 @@
         </div>
 
         <div class="page-content">
-            <form class="form" action="AdminMain.jsp">
+            <form class="form" action="addUser" method="post">
                 <ul>
                     <li>
                         <label for="add-name">Name</label>
@@ -104,7 +104,7 @@
                     </li>
                     <li>
                         <label for="add-position">Position</label>
-                        <input type="text" name="position" pattern="Teacher|Student" id="add-position" required
+                        <input type="text" name="position" pattern="teacher|student" id="add-position" required
                                spellcheck='false'/>
                         <span> Teacher or Student [ Required ]</span>
                     </li>

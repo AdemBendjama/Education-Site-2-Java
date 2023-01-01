@@ -1,5 +1,10 @@
 package control;
 
+import model.AdminManager;
+import model.LoginAuthenticator;
+import model.User;
+import model.UserManager;
+
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
@@ -38,6 +43,26 @@ public class AddUserServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        //
+        UserManager userManager = new UserManager();
+
+        //
+        String email = request.getParameter("email");
+        String name = request.getParameter("name");
+        String password = request.getParameter("password");
+        String position = request.getParameter("position");
+        User user = new User(email,name,password,position);
+
+        //
+        if(userManager.addUser(user)){
+            //
+            LoginServlet loginServlet = new LoginServlet();
+            loginServlet.doGet(request,response);
+        }else{
+            //
+            this.doGet(request,response);
+
+        }
 
     }
 }
