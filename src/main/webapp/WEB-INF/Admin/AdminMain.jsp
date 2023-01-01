@@ -71,7 +71,7 @@
                 </li>
                 <li>
                     <img src="../../resources/remove-user-24.png" alt="add-user grey icon">
-                    <a href="AdminDeleteUser.jsp">
+                    <a href="./deleteUser">
                         Delete a User
                     </a>
                 </li>

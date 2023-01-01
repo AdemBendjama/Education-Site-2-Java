@@ -71,13 +71,13 @@
                 </li>
                 <li>
                     <img src="../../resources/remove-user-24.png" alt="add-user grey icon">
-                    <a href="AdminDeleteUser.jsp">
+                    <a href="./deleteUser">
                         Delete a User
                     </a>
                 </li>
                 <li>
                     <img src="../../resources/add-user-24.png" alt="add-user grey icon">
-                    <a href="AdminAddUser.jsp">
+                    <a href="./addUser">
                         Add a User
                     </a>
                 </li>

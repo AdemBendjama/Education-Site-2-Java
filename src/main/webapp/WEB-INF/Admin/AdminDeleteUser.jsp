@@ -72,13 +72,13 @@
                 </li>
                 <li>
                     <img src="../../resources/remove-user-24.png" alt="add-user grey icon">
-                    <a href="AdminDeleteUser.jsp">
+                    <a href="./deleteUser">
                         Delete a User
                     </a>
                 </li>
                 <li>
                     <img src="../../resources/add-user-24.png" alt="add-user grey icon">
-                    <a href="AdminAddUser.jsp">
+                    <a href="./addUser">
                         Add a User
                     </a>
                 </li>
@@ -87,20 +87,13 @@
         </div>
 
         <div class="page-content">
-            <form class="form" action="AdminMain.jsp">
+            <form class="form" action="deleteUser" method="post">
                 <ul>
                     <li>
-                        <label for="delete-name">Name</label>
-                        <input type="text" name="name" id="delete-name" maxlength="100" required
+                        <label for="delete-email">Email</label>
+                        <input type="email" name="email" id="delete-email" maxlength="100" required
                                spellcheck='false'/>
-                        <span>Enter Username [ Required ]</span>
-                    </li>
-
-                    <li>
-                        <label for="delete-password">Password</label>
-                        <input type="password" name="password" id="delete-password" minlength="7" maxlength="100"
-                               required spellcheck='false'/>
-                        <span>Enter Password to Confirm [ Required ]</span>
+                        <span>Enter Email [ Required ]</span>
                     </li>
                     <li>
                         <input type="submit" id="delete-submit" value="Delete"/>
