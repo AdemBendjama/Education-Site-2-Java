@@ -6,7 +6,7 @@
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Admin</title>
+    <title>E-Learning</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -59,7 +59,7 @@
             <ul class="nav">
                 <li>
                     <img src="../../resources/list-2-24.png" alt="list-users grey icon">
-                    <a href="AdminMain.jsp">
+                    <a href="./listUsers">
                         List Users
                     </a>
                 </li>
@@ -77,7 +77,7 @@
                 </li>
                 <li>
                     <img src="../../resources/add-user-24.png" alt="add-user grey icon">
-                    <a href="AdminAddUser.jsp">
+                    <a href="./addUser">
                         Add a User
                     </a>
                 </li>
