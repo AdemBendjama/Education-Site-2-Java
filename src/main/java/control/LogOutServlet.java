@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.io.Serial;
 import java.util.Enumeration;
 
-@WebServlet(name = "LogOutServlet", value = "/Logout")
+@WebServlet(name = "LogOutServlet", value = "/logout")
 public class LogOutServlet extends HttpServlet {
     //
     @Serial

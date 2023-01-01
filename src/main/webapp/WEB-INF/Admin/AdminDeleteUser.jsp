@@ -36,7 +36,7 @@
         <nav>
             <ul>
                 <li>
-                    <a href="./Logout">
+                    <a href="./logout">
                         Log Out
                     </a>
                 </li>

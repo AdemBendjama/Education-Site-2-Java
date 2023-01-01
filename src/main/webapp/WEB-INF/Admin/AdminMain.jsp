@@ -35,13 +35,14 @@
         <nav>
             <ul>
                 <li>
-                    <a href="./Logout">
+                    <a href="./logout">
                         Log Out
                     </a>
                 </li>
                 <li>
                     <img src="../../resources/admin-24.png" alt="profile-pic grey icon"/>
                     <a href="./redirect">
+                        <jsp:useBean id="admin" scope="session" type="model.Admin"/>
                         <c:out value="${admin.username}"/>
                     </a>
                 </li>
