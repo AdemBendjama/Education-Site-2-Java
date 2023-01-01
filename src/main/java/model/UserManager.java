@@ -75,7 +75,7 @@ public class UserManager {
     //
     public User getUser(String email) {
         //
-        email=email.trim();
+        email = email.trim();
         User user = null;
 
         try {
@@ -176,7 +176,7 @@ public class UserManager {
     //
     public boolean deleteUser(String email) {
         //
-        email=email.trim();
+        email = email.trim();
 
         if (!checkUser(email)) {
             return false;
@@ -202,8 +202,23 @@ public class UserManager {
         email = email.trim();
 
         if (!checkUser(email)) {
-            System.out.println("User doesnt exist");
             return false;
+        }
+        //
+        User originalUser = this.getUser(email);
+
+        //
+        if (user.getEmail().isBlank()) {
+            user.setEmail(originalUser.getEmail());
+        }
+        if (user.getUsername().isBlank()) {
+            user.setUsername(originalUser.getUsername());
+        }
+        if (user.getPassword().isBlank()) {
+            user.setPassword(originalUser.getPassword());
+        }
+        if (user.getRank().isBlank()) {
+            user.setRank(originalUser.getRank());
         }
 
         //

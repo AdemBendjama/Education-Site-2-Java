@@ -65,7 +65,7 @@
                 </li>
                 <li>
                     <img src="../../resources/change-user-24.png" alt="add-user grey icon">
-                    <a href="AdminUpdateUser.jsp">
+                    <a href="./updateUser">
                         Update a User
                     </a>
                 </li>

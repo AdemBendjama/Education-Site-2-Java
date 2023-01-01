@@ -59,13 +59,13 @@
             <ul class="nav">
                 <li>
                     <img src="../../resources/list-2-24.png" alt="list-users grey icon"/>
-                    <a href="AdminMain.jsp">
+                    <a href="./listUsers">
                         List Users
                     </a>
                 </li>
                 <li>
                     <img src="../../resources/change-user-24.png" alt="add-user grey icon"/>
-                    <a href="AdminUpdateUser.jsp">
+                    <a href="./updateUser">
                         Update a User
                     </a>
                 </li>
