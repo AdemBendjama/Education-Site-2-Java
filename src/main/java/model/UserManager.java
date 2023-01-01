@@ -134,6 +134,56 @@ public class UserManager {
     }
 
     //
+    public List<User> sortByEmail() {
+        //
+        return this.getUsers();
+    }
+
+    //
+    public List<User> sortByName() {
+        //
+        List<User> users = new ArrayList<>();
+        try {
+            preparedStatement = connection.prepareStatement("select * from users order by user_name");
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                //
+                User user = new User(resultSet.getString(1), resultSet.getString(2),
+                        resultSet.getString(3), resultSet.getString(4));
+
+                users.add(user);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return users;
+    }
+
+    //
+    public List<User> sortByRank() {
+        //
+        List<User> users = new ArrayList<>();
+        try {
+            preparedStatement = connection.prepareStatement("select * from users order by user_rank");
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                //
+                User user = new User(resultSet.getString(1), resultSet.getString(2),
+                        resultSet.getString(3), resultSet.getString(4));
+
+                users.add(user);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return users;
+    }
+
+    //
     public int getNumberOfUsers() {
         //
         try {
