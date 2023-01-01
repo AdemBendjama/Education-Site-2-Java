@@ -10,21 +10,21 @@ sortButton.onchange = function () {
 
     switch (sortButton.value) {
         // Sort By EMAIL
-        case "email" :{
+        case "email" : {
             sortBy.value = "email";
             sortSubmit.click();
 
-            break ;
+            break;
         }
         // Sort By NAME
-        case "name" :{
+        case "name" : {
             sortBy.value = "name";
             sortSubmit.click();
 
             break;
         }
         // Sort By RANK
-        case "rank" :{
+        case "rank" : {
             sortBy.value = "rank";
             sortSubmit.click();
 

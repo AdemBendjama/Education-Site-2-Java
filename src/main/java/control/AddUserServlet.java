@@ -1,13 +1,15 @@
 package control;
 
-import model.AdminManager;
-import model.LoginAuthenticator;
 import model.User;
 import model.UserManager;
 
-import javax.servlet.*;
-import javax.servlet.http.*;
-import javax.servlet.annotation.*;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.Serial;
 
@@ -51,16 +53,16 @@ public class AddUserServlet extends HttpServlet {
         String name = request.getParameter("name");
         String password = request.getParameter("password");
         String rank = request.getParameter("rank");
-        User user = new User(email,name,password,rank);
+        User user = new User(email, name, password, rank);
 
         //
-        if(userManager.addUser(user)){
+        if (userManager.addUser(user)) {
             //
             LoginServlet loginServlet = new LoginServlet();
-            loginServlet.doGet(request,response);
-        }else{
+            loginServlet.doGet(request, response);
+        } else {
             //
-            this.doGet(request,response);
+            this.doGet(request, response);
 
         }
 

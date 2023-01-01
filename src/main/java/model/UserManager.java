@@ -6,12 +6,12 @@ import java.util.List;
 
 @SuppressWarnings("unused")
 public class UserManager {
-    //
-    private Connection connection;
-    private PreparedStatement preparedStatement;
     private final String url = "jdbc:mysql://localhost:3306/TQL_APP_BD";
     private final String root = "root";
     private final String password = "password";
+    //
+    private Connection connection;
+    private PreparedStatement preparedStatement;
 
     //
     public UserManager() {

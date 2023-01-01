@@ -8,6 +8,7 @@
     <meta charset="utf-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <title>E-learning</title>
+    <jsp:useBean id="session" scope="session" type="javax.servlet.http.HttpSession"/>
     <c:if test="${session!=null}">
         <jsp:include page="/redirect"/>
     </c:if>

@@ -1,10 +1,12 @@
 package control;
 
-import model.UserManager;
-
-import javax.servlet.*;
-import javax.servlet.http.*;
-import javax.servlet.annotation.*;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.Serial;
 
@@ -24,7 +26,6 @@ public class RedirectServlet extends HttpServlet {
         //
         RequestDispatcher dispatcher;
         HttpSession session = request.getSession();
-        UserManager userManager = new UserManager();
 
         if (session.getAttribute("admin") != null) {
             //

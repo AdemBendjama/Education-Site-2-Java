@@ -2,7 +2,6 @@ package control;
 
 import model.AdminManager;
 import model.LoginAuthenticator;
-import model.User;
 import model.UserManager;
 
 import javax.servlet.RequestDispatcher;
@@ -14,7 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.Serial;
-import java.util.List;
 
 @WebServlet(name = "LoginServlet", value = "/login")
 public class LoginServlet extends HttpServlet {
@@ -90,7 +88,7 @@ public class LoginServlet extends HttpServlet {
                     // Admin Account
                     session.setAttribute("admin", adminManager.getAdmin(email));
                     session.setAttribute("session", "admin");
-                    session.setAttribute("optionSelected","email");
+                    session.setAttribute("optionSelected", "email");
 
                     // Forwards to admin homepage
                     UserListServlet userListServlet = new UserListServlet();

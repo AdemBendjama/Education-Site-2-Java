@@ -3,9 +3,13 @@ package control;
 import model.User;
 import model.UserManager;
 
-import javax.servlet.*;
-import javax.servlet.http.*;
-import javax.servlet.annotation.*;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
@@ -34,7 +38,7 @@ public class SortUserListServlet extends HttpServlet {
                 //
                 List<User> listOfUsers = userManager.sortByEmail();
                 session.setAttribute("listOfUsers", listOfUsers);
-                session.setAttribute("optionSelected","email");
+                session.setAttribute("optionSelected", "email");
 
                 //
                 dispatcher = request.getRequestDispatcher("/WEB-INF/Admin/AdminMain.jsp");
@@ -45,7 +49,7 @@ public class SortUserListServlet extends HttpServlet {
                 //
                 List<User> listOfUsers = userManager.sortByName();
                 session.setAttribute("listOfUsers", listOfUsers);
-                session.setAttribute("optionSelected","name");
+                session.setAttribute("optionSelected", "name");
 
                 //
                 dispatcher = request.getRequestDispatcher("/WEB-INF/Admin/AdminMain.jsp");
@@ -56,7 +60,7 @@ public class SortUserListServlet extends HttpServlet {
                 //
                 List<User> listOfUsers = userManager.sortByRank();
                 session.setAttribute("listOfUsers", listOfUsers);
-                session.setAttribute("optionSelected","rank");
+                session.setAttribute("optionSelected", "rank");
 
                 //
                 dispatcher = request.getRequestDispatcher("/WEB-INF/Admin/AdminMain.jsp");

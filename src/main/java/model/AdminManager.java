@@ -1,12 +1,8 @@
 package model;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 
-@SuppressWarnings("FieldCanBeLocal")
+
 public class AdminManager {
     private final String url = "jdbc:mysql://localhost:3306/TQL_APP_BD";
     private final String root = "root";
@@ -42,8 +38,8 @@ public class AdminManager {
     //
     public boolean checkCredentials(String email, String password) {
         //
-        email=email.trim();
-        password=password.trim();
+        email = email.trim();
+        password = password.trim();
 
         try {
             preparedStatement = connection.prepareStatement("select * from admins where admin_email =? && admin_password = ?");
@@ -60,7 +56,7 @@ public class AdminManager {
     //
     public Admin getAdmin(String email) {
         //
-        email=email.trim();
+        email = email.trim();
         Admin admin = null;
 
         try {

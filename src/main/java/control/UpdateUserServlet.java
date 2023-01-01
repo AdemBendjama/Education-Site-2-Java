@@ -3,9 +3,13 @@ package control;
 import model.User;
 import model.UserManager;
 
-import javax.servlet.*;
-import javax.servlet.http.*;
-import javax.servlet.annotation.*;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.Serial;
 
@@ -34,7 +38,7 @@ public class UpdateUserServlet extends HttpServlet {
         } else {
             //
             LoginServlet loginServlet = new LoginServlet();
-            loginServlet.doGet(request,response);
+            loginServlet.doGet(request, response);
 
         }
     }
@@ -50,16 +54,16 @@ public class UpdateUserServlet extends HttpServlet {
         String newName = request.getParameter("new-name");
         String newPassword = request.getParameter("new-password");
         String newPosition = request.getParameter("new-rank");
-        User user = new User(newEmail,newName,newPassword,newPosition);
+        User user = new User(newEmail, newName, newPassword, newPosition);
 
         //
-        if(userManager.updateUser(email,user)){
+        if (userManager.updateUser(email, user)) {
             //
             LoginServlet loginServlet = new LoginServlet();
-            loginServlet.doGet(request,response);
-        }else{
+            loginServlet.doGet(request, response);
+        } else {
             //
-            this.doGet(request,response);
+            this.doGet(request, response);
 
         }
 

@@ -2,9 +2,13 @@ package control;
 
 import model.UserManager;
 
-import javax.servlet.*;
-import javax.servlet.http.*;
-import javax.servlet.annotation.*;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.Serial;
 
@@ -47,13 +51,13 @@ public class DeleteUserServlet extends HttpServlet {
         String email = request.getParameter("email");
 
         //
-        if(userManager.deleteUser(email)){
+        if (userManager.deleteUser(email)) {
             //
             LoginServlet loginServlet = new LoginServlet();
-            loginServlet.doGet(request,response);
-        }else{
+            loginServlet.doGet(request, response);
+        } else {
             //
-            this.doGet(request,response);
+            this.doGet(request, response);
 
         }
 
