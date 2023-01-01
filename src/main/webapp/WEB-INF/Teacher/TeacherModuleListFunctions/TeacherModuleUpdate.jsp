@@ -39,6 +39,7 @@
                 <li>
                     <img src="../../../resources/teacher-24.png" alt="profile-pic grey icon">
                     <a href="./redirect">
+                        <jsp:useBean id="teacher" scope="session" type="model.Admin"/>
                         <c:out value="${teacher.username}"/>
                     </a>
                 </li>
@@ -58,18 +59,7 @@
                         Modules
                     </a>
                 </li>
-                <li>
-                    <img src="../../../resources/list-2-24.png" alt="list-users grey icon"/>
-                    <a href="../TeacherListUsers.jsp">
-                        List Students
-                    </a>
-                </li>
-                <li>
-                    <img src="../../../resources/remove-user-24.png" alt="list-users grey icon">
-                    <a href="../TeacherDeleteStudent.jsp">
-                        Delete Student
-                    </a>
-                </li>
+
             </ul>
         </div>
 

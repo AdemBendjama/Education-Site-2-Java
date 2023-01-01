@@ -58,18 +58,6 @@
                         Modules
                     </a>
                 </li>
-                <li>
-                    <img src="../../resources/list-2-24.png" alt="list-users grey icon">
-                    <a href="./listUsers">
-                        List Students
-                    </a>
-                </li>
-                <li>
-                    <img src="../../resources/remove-user-24.png" alt="list-users grey icon">
-                    <a href="TeacherDeleteStudent.jsp">
-                        Delete Student
-                    </a>
-                </li>
             </ul>
 
         </div>
