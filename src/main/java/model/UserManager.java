@@ -39,7 +39,9 @@ public class UserManager {
     //
     public boolean checkUser(String email) {
         //
+        email = email.trim();
         boolean foundOrNot = false;
+
         try {
             preparedStatement = connection.prepareStatement("select * from users where user_email=?");
             preparedStatement.setString(1, email);
@@ -55,6 +57,9 @@ public class UserManager {
     //
     public boolean checkCredentials(String email, String password) {
         //
+        email = email.trim();
+        password = password.trim();
+
         try {
             preparedStatement = connection.prepareStatement("select * from users where user_email =? && user_password = ?");
             preparedStatement.setString(1, email);
@@ -70,7 +75,9 @@ public class UserManager {
     //
     public User getUser(String email) {
         //
+        email=email.trim();
         User user = null;
+
         try {
             preparedStatement = connection.prepareStatement("select * from users where user_email=?");
             preparedStatement.setString(1, email);
@@ -88,7 +95,9 @@ public class UserManager {
     //
     public String getRank(String email) {
         //
+        email = email.trim();
         String rank = null;
+
         try {
             preparedStatement = connection.prepareStatement("select user_rank from users where user_email=?");
             preparedStatement.setString(1, email);
@@ -169,6 +178,8 @@ public class UserManager {
     //
     public boolean deleteUser(String email) {
         //
+        email=email.trim();
+
         if (!checkUser(email)) {
             System.out.println("User doesnt exist");
             return false;
@@ -192,6 +203,8 @@ public class UserManager {
     //
     public boolean updateUser(String email, User user) {
         //
+        email = email.trim();
+
         if (!checkUser(email)) {
             System.out.println("User doesnt exist");
             return false;

@@ -9,10 +9,10 @@ public class User {
     private String rank;
 
     public User(String email, String username, String password, String rank) {
-        this.email = email;
-        this.username = username;
-        this.password = password;
-        this.rank = rank;
+        this.email = email.trim();
+        this.username = username.trim();
+        this.password = password.trim();
+        this.rank = rank.trim();
     }
 
 

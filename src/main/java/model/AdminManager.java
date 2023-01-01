@@ -42,6 +42,9 @@ public class AdminManager {
     //
     public boolean checkCredentials(String email, String password) {
         //
+        email=email.trim();
+        password=password.trim();
+
         try {
             preparedStatement = connection.prepareStatement("select * from admins where admin_email =? && admin_password = ?");
             preparedStatement.setString(1, email);
@@ -57,7 +60,9 @@ public class AdminManager {
     //
     public Admin getAdmin(String email) {
         //
+        email=email.trim();
         Admin admin = null;
+
         try {
             preparedStatement = connection.prepareStatement("select * from admins where admin_email=?");
             preparedStatement.setString(1, email);

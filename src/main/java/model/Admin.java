@@ -9,9 +9,9 @@ public class Admin {
 
     //
     public Admin(String email, String username, String password) {
-        this.email = email;
-        this.username = username;
-        this.password = password;
+        this.email = email.trim();
+        this.username = username.trim();
+        this.password = password.trim();
     }
 
     @Override
