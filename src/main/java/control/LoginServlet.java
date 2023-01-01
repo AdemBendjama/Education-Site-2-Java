@@ -90,6 +90,7 @@ public class LoginServlet extends HttpServlet {
                     // Admin Account
                     session.setAttribute("admin", adminManager.getAdmin(email));
                     session.setAttribute("session", "admin");
+                    session.setAttribute("optionSelected","email");
 
                     // Forwards to admin homepage
                     UserListServlet userListServlet = new UserListServlet();

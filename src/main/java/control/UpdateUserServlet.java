@@ -33,8 +33,8 @@ public class UpdateUserServlet extends HttpServlet {
 
         } else {
             //
-            dispatcher = request.getRequestDispatcher("index.jsp");
-            dispatcher.include(request, response);
+            LoginServlet loginServlet = new LoginServlet();
+            loginServlet.doGet(request,response);
 
         }
     }

@@ -88,26 +88,49 @@
 
         <div class="page-content">
             <div class="options">
-                <label for="sortButton"></label><select name="" id="sortButton" class="button">
-                <option value="name" selected>Name</option>
-                <option value="email">Email</option>
-                <option value="type">Type</option>
-            </select>
+                <label for="sortButton"></label>
+                <select name="sortButton" id="sortButton" class="button">
+                    <jsp:useBean id="optionSelected" scope="session" type="java.lang.String"/>
+                    <c:choose>
+                        <c:when test="${optionSelected == 'email'}">
+                            <option value="email" selected>Email</option>
+                            <option value="name">Name</option>
+                            <option value="rank">Rank</option>
+                        </c:when>
+                        <c:when test="${optionSelected == 'name'}">
+                            <option value="email">Email</option>
+                            <option value="name" selected>Name</option>
+                            <option value="rank">Rank</option>
+                        </c:when>
+                        <c:when test="${optionSelected == 'rank'}">
+                            <option value="email">Email</option>
+                            <option value="name">Name</option>
+                            <option value="rank" selected>Rank</option>
+                        </c:when>
+                    </c:choose>
+                </select>
             </div>
+            <form id="sort-form" action="sort" method="post" style="display: none">
+                <label>
+                    <input type="text" name="sortBy" id="sortBy">
+                </label>
+                <input type="submit" id="sort-submit">
+            </form>
             <table class="table table-dark">
                 <thead>
                 <tr>
-                    <td>Name</td>
                     <td>Email</td>
+                    <td>Name</td>
                     <td>Password</td>
-                    <td>Type</td>
+                    <td>Rank</td>
                 </tr>
                 </thead>
                 <tbody>
+                <jsp:useBean id="listOfUsers" scope="session" type="java.util.List"/>
                 <c:forEach var="i" begin="0" end="${listOfUsers.size()-1}" step="1">
                     <tr>
-                        <td><c:out value="${listOfUsers[i].username}"/></td>
                         <td><c:out value="${listOfUsers[i].email}"/></td>
+                        <td><c:out value="${listOfUsers[i].username}"/></td>
                         <td><c:out value="${listOfUsers[i].password}"/></td>
                         <td><c:out value="${listOfUsers[i].rank}"/></td>
                     </tr>
