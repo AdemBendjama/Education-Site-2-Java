@@ -157,5 +157,8 @@
         <p>Contact webmaster@univ-constantine2</p>
     </div>
 </div>
+
+<script src="../../scripts/sortUserList.js"></script>
+
 </body>
 </html>
