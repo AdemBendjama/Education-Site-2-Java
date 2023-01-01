@@ -153,7 +153,6 @@ public class UserManager {
     public boolean addUser(User user) {
         //
         if (checkUser(user.getEmail())) {
-            System.out.println("User Already Exists in the Database");
             return false;
         }
 
@@ -166,7 +165,6 @@ public class UserManager {
             preparedStatement.setString(3, user.getPassword());
             preparedStatement.setString(4, user.getRank());
             preparedStatement.executeUpdate();
-            System.out.println("Added !");
             return true;
 
         } catch (SQLException e) {
@@ -181,7 +179,6 @@ public class UserManager {
         email=email.trim();
 
         if (!checkUser(email)) {
-            System.out.println("User doesnt exist");
             return false;
         }
 
@@ -191,7 +188,6 @@ public class UserManager {
             preparedStatement = connection.prepareStatement("delete from users where user_email=?");
             preparedStatement.setString(1, email);
             preparedStatement.executeUpdate();
-            System.out.println("Deleted !");
             return true;
 
         } catch (SQLException e) {
@@ -221,7 +217,6 @@ public class UserManager {
             preparedStatement.setString(4, user.getRank());
             preparedStatement.setString(5, email);
             preparedStatement.executeUpdate();
-            System.out.println("Updated !");
             return true;
 
         } catch (SQLException e) {
