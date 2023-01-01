@@ -103,8 +103,8 @@
                         <span>Enter a Password [ Required ]</span>
                     </li>
                     <li>
-                        <label for="add-position">Position</label>
-                        <input type="text" name="position" pattern="teacher|student" id="add-position" required
+                        <label for="add-rank">Position</label>
+                        <input type="text" name="rank" pattern="teacher|student" id="add-rank" required
                                spellcheck='false'/>
                         <span> Teacher or Student [ Required ]</span>
                     </li>

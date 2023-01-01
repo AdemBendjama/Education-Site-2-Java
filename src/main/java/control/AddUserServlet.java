@@ -50,8 +50,8 @@ public class AddUserServlet extends HttpServlet {
         String email = request.getParameter("email");
         String name = request.getParameter("name");
         String password = request.getParameter("password");
-        String position = request.getParameter("position");
-        User user = new User(email,name,password,position);
+        String rank = request.getParameter("rank");
+        User user = new User(email,name,password,rank);
 
         //
         if(userManager.addUser(user)){

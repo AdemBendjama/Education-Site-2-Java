@@ -49,7 +49,7 @@ public class UpdateUserServlet extends HttpServlet {
         String newEmail = request.getParameter("new-email");
         String newName = request.getParameter("new-name");
         String newPassword = request.getParameter("new-password");
-        String newPosition = request.getParameter("new-position");
+        String newPosition = request.getParameter("new-rank");
         User user = new User(newEmail,newName,newPassword,newPosition);
 
         //

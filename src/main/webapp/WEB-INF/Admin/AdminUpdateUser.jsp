@@ -111,8 +111,8 @@
                         <span>Enter a new Password [ Optional ]</span>
                     </li>
                     <li>
-                        <label for="update-new-position">New Position</label>
-                        <input type="text" name="new-position" id="update-new-position" pattern="teacher|student"
+                        <label for="update-new-rank">New Position</label>
+                        <input type="text" name="new-rank" id="update-new-rank" pattern="teacher|student"
                                maxlength="100" spellcheck='false'/>
                         <span>Teacher or Student [ Optional ]</span>
                     </li>
