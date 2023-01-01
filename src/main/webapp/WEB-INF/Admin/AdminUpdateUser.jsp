@@ -59,13 +59,13 @@
             <ul class="nav">
                 <li>
                     <img src="../../resources/list-2-24.png" alt="list-users grey icon">
-                    <a href="AdminMain.jsp">
+                    <a href="./listUsers">
                         List Users
                     </a>
                 </li>
                 <li>
                     <img src="../../resources/change-user-24.png" alt="add-user grey icon">
-                    <a href="AdminUpdateUser.jsp">
+                    <a href="./updateUser">
                         Update a User
                     </a>
                 </li>
@@ -86,33 +86,33 @@
         </div>
 
         <div class="page-content">
-            <form class="form" action="AdminMain.jsp">
+            <form class="form" action="updateUser" method="post">
                 <ul>
                     <li>
-                        <label for="update-oldname">Old Name</label>
-                        <input type="text" name="oldName" id="update-oldname" maxlength="100" required
+                        <label for="update-email">Email</label>
+                        <input type="email" name="email" id="update-email" maxlength="100" required
                                spellcheck='false'/>
                         <span>Enter a valid Username [ Required ]</span>
                     </li>
                     <li>
-                        <label for="update-name">New Name</label>
-                        <input type="text" name="newName" id="update-name" maxlength="100" spellcheck='false'/>
-                        <span>Enter a new Username [ Optional ]</span>
-                    </li>
-                    <li>
-                        <label for="update-email">New Email</label>
-                        <input type="email" name="newEmail" id="update-email" maxlength="100" spellcheck='false'/>
+                        <label for="update-new-email">New Email</label>
+                        <input type="email" name="new-email" id="update-new-email" maxlength="100" spellcheck='false'/>
                         <span>Enter a valid email address [ Optional ]</span>
                     </li>
                     <li>
-                        <label for="update-password">New Password</label>
-                        <input type="password" name="newPassword" id="update-password" minlength="7"
+                        <label for="update-new-name">New Name</label>
+                        <input type="text" name="new-name" id="update-new-name" maxlength="100" spellcheck='false'/>
+                        <span>Enter a new Username [ Optional ]</span>
+                    </li>
+                    <li>
+                        <label for="update-new-password">New Password</label>
+                        <input type="password" name="new-password" id="update-new-password" minlength="7"
                                maxlength="100"/>
                         <span>Enter a new Password [ Optional ]</span>
                     </li>
                     <li>
-                        <label for="update-position">New Position</label>
-                        <input type="text" name="newPosition" id="update-position" pattern="teacher|student"
+                        <label for="update-new-position">New Position</label>
+                        <input type="text" name="new-position" id="update-new-position" pattern="teacher|student"
                                maxlength="100" spellcheck='false'/>
                         <span>Teacher or Student [ Optional ]</span>
                     </li>
