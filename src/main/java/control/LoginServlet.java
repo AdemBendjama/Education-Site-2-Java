@@ -32,7 +32,6 @@ public class LoginServlet extends HttpServlet {
         //
         RequestDispatcher dispatcher;
         HttpSession session = request.getSession();
-        UserManager userManager = new UserManager();
 
         if (session.getAttribute("admin") != null) {
             //
