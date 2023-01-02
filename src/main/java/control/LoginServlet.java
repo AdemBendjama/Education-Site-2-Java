@@ -42,8 +42,9 @@ public class LoginServlet extends HttpServlet {
             //
             session.setAttribute("session", "teacher");
 
-            dispatcher = request.getRequestDispatcher("/WEB-INF/Teacher/TeacherMain.jsp");
-            dispatcher.include(request, response);
+            SubjectListServlet subjectListServlet = new SubjectListServlet();
+            subjectListServlet.doGet(request, response);
+
 
         } else if (session.getAttribute("student") != null) {
             //
@@ -100,8 +101,8 @@ public class LoginServlet extends HttpServlet {
                     session.setAttribute("session", "teacher");
 
                     // Forwards to teacher homepage
-                    dispatcher = request.getRequestDispatcher("/WEB-INF/Teacher/TeacherMain.jsp");
-                    dispatcher.forward(request, response);
+                    SubjectListServlet subjectListServlet = new SubjectListServlet();
+                    subjectListServlet.doGet(request, response);
                 }
                 case "student" -> {
                     // Student Account
