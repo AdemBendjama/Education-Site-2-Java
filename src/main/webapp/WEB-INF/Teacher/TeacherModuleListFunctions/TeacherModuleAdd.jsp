@@ -64,7 +64,7 @@
         </div>
 
         <div class="page-content">
-            <form class="form" action="../TeacherModuleList.jsp">
+            <form class="form" action="../TeacherModuleDisplay.jsp">
                 <ul>
                     <li>
                         <label for="add-typeModule">Module Type</label>

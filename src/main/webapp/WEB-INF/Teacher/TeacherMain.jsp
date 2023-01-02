@@ -64,6 +64,12 @@
         </div>
 
         <div class="page-content">
+            <form id="subject-form" action="subject" method="post" style="display: none">
+                <label>
+                    <input type="text" name="subject-name" id="subject-name">
+                </label>
+                <input type="submit" id="subject-submit">
+            </form>
             <table class="table table-dark">
                 <thead>
                 <tr>
@@ -76,7 +82,9 @@
                 <c:if test="${listOfSubjects.size()!=0}">
                 <c:forEach var="i" begin="0" end="${listOfSubjects.size()-1}" step="1">
                     <tr>
-                        <td><a href="#"><c:out value="${listOfSubjects[i].name}"/> </a></td>
+                        <td><a onclick="submitSubjectName('<c:out value="${listOfSubjects[i].name}"/>')">
+                            <c:out value="${listOfSubjects[i].name}"/></a>
+                        </td>
                         <td><c:out value="${listOfSubjects[i].specialty}"/></td>
                     </tr>
                 </c:forEach>
@@ -104,6 +112,6 @@
     </div>
 </div>
 
-
+<script src="../../scripts/redirectToSubjectPage.js"></script>
 </body>
 </html>

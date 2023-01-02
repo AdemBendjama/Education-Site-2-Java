@@ -39,7 +39,6 @@
                     <img src="../../resources/teacher-24.png" alt="profile-pic grey icon">
                     <a href="./login">
                         <jsp:useBean id="teacher" scope="session" type="model.User"/>
-                        <jsp:useBean id="teacher" scope="session" type="model.User"/>
                         <c:out value="${teacher.username}"/>
                     </a>
                 </li>
@@ -55,35 +54,43 @@
             <ul class="nav">
                 <li>
                     <img src="../../resources/list-2-24.png" alt="list-users grey icon"/>
-                    <a href="TeacherMain.jsp">
+                    <a href="./login">
                         Modules
                     </a>
                 </li>
             </ul>
         </div>
 
-        <div class="page-content">
-            <div class="options">
-                <input type="button" value="Add" id="button-add" class="button"/>
-                <input type="button" value="Update" id="button-update" class="button"/>
-                <input type="button" value="Delete" id="button-delete" class="button"/>
-                <label for="sortButton-module"></label><select name="" id="sortButton-module" class="button">
-                <option value="typeModule" selected>Type</option>
-                <option value="date">Date</option>
-                <option value="period">Period</option>
-            </select>
-            </div>
+        <div class="page-content student-module">
+            <jsp:useBean id="subjectName" scope="session" type="java.lang.String"/>
+            <h1><c:out value="${subjectName}"/></h1>
+            
+            <jsp:useBean id="weeks" scope="session" type="java.util.List"/>
+
+            <c:if test="${weeks.size()!=0}">
+            <c:forEach var="i" begin="0" end="${weeks.size()-1}">
+
+            <h3><c:out value="${weeks[i]}"/></h3>
             <table class="table table-dark">
                 <thead>
                 <tr>
-                    <td>Type</td>
-                    <td>Date</td>
-                    <td>Period</td>
+                    <td>Cour</td>
+                    <td>TD</td>
+                    <td>TP</td>
+                    <td>Autre</td>
                 </tr>
                 </thead>
                 <tbody>
+                <tr>
+                    <td><a href="">Chapitre 01</a></td>
+                    <td><a href="">TD 01</a></td>
+                    <td><a href="">TP 01</a></td>
+                    <td>Not Available</td>
+                </tr>
                 </tbody>
             </table>
+            </c:forEach>
+            </c:if>
         </div>
     </div>
 </div>

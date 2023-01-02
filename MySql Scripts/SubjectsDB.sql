@@ -83,6 +83,10 @@ INSERT INTO `TQL_APP_BD`.`teacherSubjects` (`email`, `subjects`) VALUES ('marbel
 INSERT INTO `TQL_APP_BD`.`teachingWeeks` (`subjects`, `week_start`, `week_end`) VALUES ('DAC', '2022-10-04', '2022-10-12');
 INSERT INTO `TQL_APP_BD`.`teachingWeeks` (`subjects`, `week_start`, `week_end`) VALUES ('DAC', '2022-10-13', '2022-10-20');
 
+INSERT INTO `TQL_APP_BD`.`teachingWeeks` (`id`, `subjects`, `week_start`, `week_end`) VALUES (NULL, 'AL', '2022-09-15', '2022-09-21');
+INSERT INTO `TQL_APP_BD`.`teachingWeeks` (`subjects`, `week_start`, `week_end`) VALUES ('AL', '2022-10-14', '2022-10-24');
+
+
 INSERT INTO `TQL_APP_BD`.`subjectDesc` (`teachingWeek`, `descriptionInfo`) VALUES ('1', 'Introduction to Threads');
 INSERT INTO `TQL_APP_BD`.`subjectDesc` (`teachingWeek`, `descriptionInfo`) VALUES ('2', 'Semaphores and the philosephor\'s problem');
 
@@ -92,3 +96,5 @@ INSERT INTO `TQL_APP_BD`.`subjectCour` (`cour_link`, `cour_name`, `teachingWeek`
 INSERT INTO `TQL_APP_BD`.`subjectTP` (`tp_link`, `tp_name`, `teachingWeek`) VALUES ('https://drive.google.com/file/d/1s_eOmctOYhmbALxJpcgJ2WazNI8-eJu4/view', 'TP 01', '2');
 
 INSERT INTO `TQL_APP_BD`.`subjectTD` (`td_link`, `td_name`, `teachingWeek`) VALUES ('https://drive.google.com/file/d/1tvhM7U19YcfgSozig4LdyJd7Dh7c5WiU/view', 'TD 02', '2');
+
+
