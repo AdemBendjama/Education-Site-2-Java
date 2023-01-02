@@ -37,7 +37,7 @@
                 <li>
                     <img src="../../resources/teacher-24.png" alt="profile-pic grey icon">
                     <a href="./redirect">
-                        <jsp:useBean id="student" scope="session" type="model.Admin"/>
+                        <jsp:useBean id="student" scope="session" type="model.User"/>
                         <c:out value="${student.username}"/>
                     </a>
                 </li>

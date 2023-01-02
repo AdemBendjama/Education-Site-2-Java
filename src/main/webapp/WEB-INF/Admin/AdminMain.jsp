@@ -127,6 +127,7 @@
                 </thead>
                 <tbody>
                 <jsp:useBean id="listOfUsers" scope="session" type="java.util.List"/>
+                <c:if test="${listOfUsers.size()!=0}">
                 <c:forEach var="i" begin="0" end="${listOfUsers.size()-1}" step="1">
                     <tr>
                         <td><c:out value="${listOfUsers[i].email}"/></td>
@@ -135,6 +136,7 @@
                         <td><c:out value="${listOfUsers[i].rank}"/></td>
                     </tr>
                 </c:forEach>
+                </c:if>
                 </tbody>
             </table>
 

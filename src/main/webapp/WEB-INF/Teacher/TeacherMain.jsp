@@ -39,7 +39,7 @@
                 <li>
                     <img src="../../resources/teacher-24.png" alt="profile-pic grey icon">
                     <a href="./redirect">
-                        <jsp:useBean id="teacher" scope="session" type="model.Admin"/>
+                        <jsp:useBean id="teacher" scope="session" type="model.User"/>
                         <c:out value="${teacher.username}"/>
                     </a>
                 </li>
@@ -55,7 +55,7 @@
             <ul class="nav">
                 <li>
                     <img src="../../resources/list-2-24.png" alt="list-users grey icon">
-                    <a href="TeacherMain.jsp">
+                    <a href="#">
                         Modules
                     </a>
                 </li>
@@ -67,13 +67,20 @@
             <table class="table table-dark">
                 <thead>
                 <tr>
-                    <td>Module</td>
+                    <td>Subject</td>
+                    <td>Specialty</td>
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td><a href="TeacherModuleList.jsp">DAC</a></td>
-                </tr>
+                <jsp:useBean id="listOfSubjects" scope="session" type="java.util.List"/>
+                <c:if test="${listOfSubjects.size()!=0}">
+                <c:forEach var="i" begin="0" end="${listOfSubjects.size()-1}" step="1">
+                    <tr>
+                        <td><a href="#"><c:out value="${listOfSubjects[i].name}"/> </a></td>
+                        <td><c:out value="${listOfSubjects[i].specialty}"/></td>
+                    </tr>
+                </c:forEach>
+                </c:if>
                 </tbody>
             </table>
         </div>
