@@ -29,7 +29,7 @@
     <div class="Navbar">
 
         <div class="logo">
-            <a href="./redirect"><img src="../../resources/Logo-04-removebg-preview.png" alt="logo"/></a>
+            <a href="./login"><img src="../../resources/Logo-04-removebg-preview.png" alt="logo"/></a>
         </div>
 
         <nav>
@@ -41,7 +41,7 @@
                 </li>
                 <li>
                     <img src="../../resources/admin-24.png" alt="profile-pic grey icon"/>
-                    <a href="./redirect">
+                    <a href="./login">
                         <jsp:useBean id="admin" scope="session" type="model.Admin"/>
                         <c:out value="${admin.username}"/>
                     </a>

@@ -26,7 +26,7 @@
 <div class="containers">
     <div class="Navbar">
         <div class="logo">
-            <a href="./redirect"><img src="../../resources/Logo-04-removebg-preview.png" alt="logo"></a>
+            <a href="./login"><img src="../../resources/Logo-04-removebg-preview.png" alt="logo"></a>
         </div>
         <nav>
             <ul>
@@ -37,7 +37,7 @@
                 </li>
                 <li>
                     <img src="../../resources/teacher-24.png" alt="profile-pic grey icon">
-                    <a href="./redirect">
+                    <a href="./login">
                         <jsp:useBean id="teacher" scope="session" type="model.User"/>
                         <jsp:useBean id="teacher" scope="session" type="model.User"/>
                         <c:out value="${teacher.username}"/>
