@@ -50,28 +50,32 @@ Create table teachingWeeks (
     foreign key (subjects) references subjects(name)
 );
 
+ALTER TABLE teachingWeeks
+ADD CONSTRAINT CHK_DATE
+  CHECK ((Date(week_start)<Date(week_end)));
+
 create table subjectDesc (
 	teachingWeek int primary key,
-    descriptionInfo varchar(100),
+    descriptionInfo varchar(300),
     foreign key (teachingWeek) references teachingWeeks(id)
 );
 
 create table subjectCour (
-	cour_link varchar(200) primary key,
+	cour_link varchar(300) primary key,
     cour_name varchar(50),
     teachingWeek int ,
     foreign key (teachingWeek) references teachingWeeks(id)
 );
 
 create table subjectTD (
-	td_link varchar(200) primary key,
+	td_link varchar(300) primary key,
     td_name varchar(50),
     teachingWeek int ,
     foreign key (teachingWeek) references teachingWeeks(id)
 );
 
 create table subjectTP (
-	tp_link varchar(200) primary key,
+	tp_link varchar(300) primary key,
     tp_name varchar(50),
     teachingWeek int ,
     foreign key (teachingWeek) references teachingWeeks(id)
