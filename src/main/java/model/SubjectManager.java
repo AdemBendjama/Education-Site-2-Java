@@ -207,5 +207,97 @@ public class SubjectManager {
         return cours;
     }
 
+    //
+    public HashMap<String,String> getTD(int weekID) {
+        //
+        HashMap<String,String> tds = new HashMap<>();
+
+        try {
+            preparedStatement = connection.prepareStatement("""
+                    select td_link,td_name from subjectTD
+                    where teachingWeek = ?""");
+
+            preparedStatement.setInt(1, weekID);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                //
+                String tdLink = resultSet.getString(1);
+                String tdName = resultSet.getString(2);
+
+                tds.put(tdLink,tdName);
+
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return tds;
+    }
+
+    //
+    public HashMap<Integer,HashMap<String,String>> getTDs(List<Integer> weekIDs) {
+        //
+        HashMap<Integer,HashMap<String,String>> tds = new HashMap<>();
+        HashMap<String,String> td ;
+
+        //
+        for (Integer weekID : weekIDs) {
+            //
+            td = this.getTD(weekID);
+            tds.put(weekID,td);
+
+        }
+
+        return tds;
+    }
+
+    //
+    public HashMap<String,String> getTP(int weekID) {
+        //
+        HashMap<String,String> tps = new HashMap<>();
+
+        try {
+            preparedStatement = connection.prepareStatement("""
+                    select tp_link,tp_name from subjectTP
+                    where teachingWeek = ?""");
+
+            preparedStatement.setInt(1, weekID);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                //
+                String tpLink = resultSet.getString(1);
+                String tpName = resultSet.getString(2);
+
+                tps.put(tpLink,tpName);
+
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return tps;
+    }
+
+    //
+    public HashMap<Integer,HashMap<String,String>> getTPs(List<Integer> weekIDs) {
+        //
+        HashMap<Integer,HashMap<String,String>> tps = new HashMap<>();
+        HashMap<String,String> tp ;
+
+        //
+        for (Integer weekID : weekIDs) {
+            //
+            tp = this.getTP(weekID);
+            tps.put(weekID,tp);
+
+        }
+
+        return tps;
+    }
+
 
 }

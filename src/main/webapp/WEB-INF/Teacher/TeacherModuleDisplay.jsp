@@ -98,11 +98,17 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td>
-                                <a href="" target="_blank">TD 01</a>
-                            </td>
-                        </tr>
+                        <jsp:useBean id="tds" scope="session" type="java.util.HashMap"/>
+                        <c:if test="${tds.get(week.key).size() != 0}">
+                            <c:forEach  var="td" items="${tds.get(week.key)}">
+                                <tr>
+                                    <td>
+                                        <a href="<c:out value="${td.key}"/>" target="_blank">
+                                            <c:out value="${td.value}"/></a>
+                                    </td>
+                                </tr>
+                            </c:forEach>
+                        </c:if>
                         </tbody>
 
                         <thead>
@@ -111,24 +117,18 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td>
-                                <a href="" target="_blank">TP 01</a>
-                            </td>
-                        </tr>
+                        <jsp:useBean id="tps" scope="session" type="java.util.HashMap"/>
+                        <c:if test="${tps.get(week.key).size() != 0}">
+                            <c:forEach  var="tp" items="${tps.get(week.key)}">
+                                <tr>
+                                    <td>
+                                        <a href="<c:out value="${tp.key}"/>" target="_blank">
+                                            <c:out value="${tp.value}"/></a>
+                                    </td>
+                                </tr>
+                            </c:forEach>
+                        </c:if>
                         </tbody>
-
-                        <thead>
-                        <tr>
-                            <td>Other</td>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td></td>
-                        </tr>
-                        </tbody>
-
 
                     </table>
                 </c:forEach>
