@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
 
 @WebServlet(name = "SubjectContentDisplayServlet", value = "/subject")
@@ -20,7 +21,6 @@ public class SubjectContentDisplayServlet extends HttpServlet {
         RequestDispatcher dispatcher;
         HttpSession session = request.getSession();
         if (session.getAttribute("subjectName") != null
-                && session.getAttribute("weeks") != null
                 && session.getAttribute("teacher") != null) {
             //
             dispatcher = request.getRequestDispatcher("/WEB-INF/Teacher/TeacherModuleDisplay.jsp");
@@ -41,11 +41,17 @@ public class SubjectContentDisplayServlet extends HttpServlet {
 
         //
         if (session.getAttribute("teacher") != null) {
+            //
             String subjectName = request.getParameter("subject-name");
-            List<String> weeks = subjectManager.getWeeks(subjectName);
+            HashMap<Integer,String> weeks = subjectManager.getWeeks(subjectName);
+
+            //
+            List<Integer> weekIDs = subjectManager.getWeekID(subjectName);
+            HashMap<Integer,HashMap<String,String>> cours = subjectManager.getCours(weekIDs);
 
             session.setAttribute("subjectName", subjectName);
             session.setAttribute("weeks", weeks);
+            session.setAttribute("cours", cours);
 
             dispatcher = request.getRequestDispatcher("/WEB-INF/Teacher/TeacherModuleDisplay.jsp");
             dispatcher.forward(request, response);

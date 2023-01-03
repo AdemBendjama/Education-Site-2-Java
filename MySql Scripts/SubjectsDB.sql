@@ -31,6 +31,8 @@ INSERT INTO `TQL_APP_BD`.subjects (`name`, `specialty`) VALUES ('DAM', 'L3 TI');
 INSERT INTO `TQL_APP_BD`.subjects (`name`, `specialty`) VALUES ('TQL', 'L3 GL');
 INSERT INTO `TQL_APP_BD`.subjects (`name`, `specialty`) VALUES ('GPL', 'L3 GL');
 INSERT INTO `TQL_APP_BD`.subjects (`name`, `specialty`) VALUES ('TABD', 'L3 GL');
+INSERT INTO `TQL_APP_BD`.`subjects` (`name`, `specialty`) VALUES ('AO', 'L2 MI');
+
 
 create table teacherSubjects(
 	email varchar(40) ,
@@ -77,14 +79,14 @@ create table subjectTP (
 
 
 INSERT INTO `TQL_APP_BD`.`teacherSubjects` (`email`, `subjects`) VALUES ('marbel@gmail.com', 'DAC');
-INSERT INTO `TQL_APP_BD`.`teacherSubjects` (`email`, `subjects`) VALUES ('marbel@gmail.com', 'AL');
+INSERT INTO `TQL_APP_BD`.`teacherSubjects` (`email`, `subjects`) VALUES ('marbel@gmail.com', 'AO');
 
 
 INSERT INTO `TQL_APP_BD`.`teachingWeeks` (`subjects`, `week_start`, `week_end`) VALUES ('DAC', '2022-10-04', '2022-10-12');
 INSERT INTO `TQL_APP_BD`.`teachingWeeks` (`subjects`, `week_start`, `week_end`) VALUES ('DAC', '2022-10-13', '2022-10-20');
 
-INSERT INTO `TQL_APP_BD`.`teachingWeeks` (`id`, `subjects`, `week_start`, `week_end`) VALUES (NULL, 'AL', '2022-09-15', '2022-09-21');
-INSERT INTO `TQL_APP_BD`.`teachingWeeks` (`subjects`, `week_start`, `week_end`) VALUES ('AL', '2022-10-14', '2022-10-24');
+INSERT INTO `TQL_APP_BD`.`teachingWeeks` (`id`, `subjects`, `week_start`, `week_end`) VALUES (NULL, 'AO', '2022-09-15', '2022-09-21');
+INSERT INTO `TQL_APP_BD`.`teachingWeeks` (`subjects`, `week_start`, `week_end`) VALUES ('AO', '2022-10-14', '2022-10-24');
 
 
 INSERT INTO `TQL_APP_BD`.`subjectDesc` (`teachingWeek`, `descriptionInfo`) VALUES ('1', 'Introduction to Threads');
@@ -96,5 +98,13 @@ INSERT INTO `TQL_APP_BD`.`subjectCour` (`cour_link`, `cour_name`, `teachingWeek`
 INSERT INTO `TQL_APP_BD`.`subjectTP` (`tp_link`, `tp_name`, `teachingWeek`) VALUES ('https://drive.google.com/file/d/1s_eOmctOYhmbALxJpcgJ2WazNI8-eJu4/view', 'TP 01', '2');
 
 INSERT INTO `TQL_APP_BD`.`subjectTD` (`td_link`, `td_name`, `teachingWeek`) VALUES ('https://drive.google.com/file/d/1tvhM7U19YcfgSozig4LdyJd7Dh7c5WiU/view', 'TD 02', '2');
+
+INSERT INTO `TQL_APP_BD`.`subjectDesc` (`teachingWeek`, `descriptionInfo`) VALUES ('3', 'Introduction to Archetecture of Programs');
+INSERT INTO `TQL_APP_BD`.`subjectDesc` (`teachingWeek`, `descriptionInfo`) VALUES ('4', 'Understading Multi Level Complex Computer Systems');
+
+INSERT INTO `TQL_APP_BD`.`subjectCour` (`cour_link`, `cour_name`, `teachingWeek`) VALUES ('https://drive.google.com/file/d/1vfueNEpoCtuz7tsmsM5WTbttO-6RXGKA/view?usp=sharing', 'Cour 01 (Introduction).pdf', '3');
+INSERT INTO `TQL_APP_BD`.`subjectCour` (`cour_link`, `cour_name`, `teachingWeek`) VALUES ('https://drive.google.com/file/d/1bycy9QP7BMR6dKOsdIDLjbQf9FhnOuoh/view?usp=sharing', 'Cour 02 (Complex Systems).pdf', '4');
+
+INSERT INTO `TQL_APP_BD`.`subjectTP` (`tp_link`, `tp_name`, `teachingWeek`) VALUES ('https://drive.google.com/file/d/17KejmFhS2Ch1UUCZ9vfFyWDuI9R8jbOP/view', 'TP 01', '4');
 
 

@@ -64,32 +64,74 @@
         <div class="page-content student-module">
             <jsp:useBean id="subjectName" scope="session" type="java.lang.String"/>
             <h1><c:out value="${subjectName}"/></h1>
-            
-            <jsp:useBean id="weeks" scope="session" type="java.util.List"/>
+
+            <jsp:useBean id="weeks" scope="session" type="java.util.HashMap"/>
 
             <c:if test="${weeks.size()!=0}">
-            <c:forEach var="i" begin="0" end="${weeks.size()-1}">
+                <c:forEach var="week" items="${weeks}">
 
-            <h3><c:out value="${weeks[i]}"/></h3>
-            <table class="table table-dark">
-                <thead>
-                <tr>
-                    <td>Cour</td>
-                    <td>TD</td>
-                    <td>TP</td>
-                    <td>Autre</td>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td><a href="">Chapitre 01</a></td>
-                    <td><a href="">TD 01</a></td>
-                    <td><a href="">TP 01</a></td>
-                    <td>Not Available</td>
-                </tr>
-                </tbody>
-            </table>
-            </c:forEach>
+                    <h3><c:out value="${week.value}"/></h3>
+                    <table class="table table-dark">
+
+                        <thead>
+                        <tr>
+                            <td>Lessons</td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <jsp:useBean id="cours" scope="session" type="java.util.HashMap"/>
+                        <c:if test="${cours.get(week.key).size() != 0}">
+                        <c:forEach  var="cour" items="${cours.get(week.key)}">
+                        <tr>
+                            <td>
+                                <a href="<c:out value="${cour.key}"/>" target="_blank">
+                                <c:out value="${cour.value}"/></a>
+                            </td>
+                        </tr>
+                        </c:forEach>
+                        </c:if>
+                        </tbody>
+
+                        <thead>
+                        <tr>
+                            <td>TDs</td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>
+                                <a href="" target="_blank">TD 01</a>
+                            </td>
+                        </tr>
+                        </tbody>
+
+                        <thead>
+                        <tr>
+                            <td>TPs</td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>
+                                <a href="" target="_blank">TP 01</a>
+                            </td>
+                        </tr>
+                        </tbody>
+
+                        <thead>
+                        <tr>
+                            <td>Other</td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td></td>
+                        </tr>
+                        </tbody>
+
+
+                    </table>
+                </c:forEach>
             </c:if>
         </div>
     </div>
