@@ -1,10 +1,15 @@
 /* Teacher Weeks Add,update,delete support buttons */
-.form{
-    max-width: 600px ;
+.form {
+    max-width: 600px;
 }
-.weeks-buttons-container{
+
+.weeks-buttons-container {
     display: flex;
     justify-content: space-between;
+}
+
+.form .weeks-buttons-container a {
+    text-decoration: none;
 }
 
 .weeks-button {
@@ -27,3 +32,5 @@
 .weeks-button:focus {
     outline: none;
 }
+
+

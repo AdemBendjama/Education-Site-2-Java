@@ -84,13 +84,13 @@
         </div>
 
         <div class="page-content">
-                <form class="form" action="" method="post">
-                        <div class="weeks-buttons-container">
-                        <input type="submit" value="Add Support" id="add-support" class="weeks-button"/>
-                        <input type="submit" value="Update Support" id="update-support" class="weeks-button"/>
-                        <input type="submit" value="Delete Support" id="delete-support" class="weeks-button"/>
-                    </div>
-                </form>
+            <form class="form" action="" method="post">
+                <div class="weeks-buttons-container">
+                    <a href="./addContent" id="add-support" class="weeks-button">Add Support</a>
+                    <a href="./updateContent" id="update-support" class="weeks-button">Update Support</a>
+                    <a href="./deleteContent" id="delete-support" class="weeks-button">Delete Support</a>
+                </div>
+            </form>
         </div>
 
     </div>
