@@ -58,6 +58,18 @@
                         Modules
                     </a>
                 </li>
+                <li>
+                    <img src="../../resources/list-2-24.png" alt="list-users grey icon">
+                    <a href="./addWeek">
+                        Add Week
+                    </a>
+                </li>
+                <li>
+                    <img src="../../resources/list-2-24.png" alt="list-users grey icon">
+                    <a href="./deleteWeek">
+                        Delete Week
+                    </a>
+                </li>
             </ul>
         </div>
 
@@ -81,14 +93,14 @@
                         <tbody>
                         <jsp:useBean id="cours" scope="session" type="java.util.HashMap"/>
                         <c:if test="${cours.get(week.key).size() != 0}">
-                        <c:forEach  var="cour" items="${cours.get(week.key)}">
-                        <tr>
-                            <td>
-                                <a href="<c:out value="${cour.key}"/>" target="_blank">
-                                <c:out value="${cour.value}"/></a>
-                            </td>
-                        </tr>
-                        </c:forEach>
+                            <c:forEach var="cour" items="${cours.get(week.key)}">
+                                <tr>
+                                    <td>
+                                        <a href="<c:out value="${cour.key}"/>" target="_blank">
+                                            <c:out value="${cour.value}"/></a>
+                                    </td>
+                                </tr>
+                            </c:forEach>
                         </c:if>
                         </tbody>
 
@@ -100,7 +112,7 @@
                         <tbody>
                         <jsp:useBean id="tds" scope="session" type="java.util.HashMap"/>
                         <c:if test="${tds.get(week.key).size() != 0}">
-                            <c:forEach  var="td" items="${tds.get(week.key)}">
+                            <c:forEach var="td" items="${tds.get(week.key)}">
                                 <tr>
                                     <td>
                                         <a href="<c:out value="${td.key}"/>" target="_blank">
@@ -119,7 +131,7 @@
                         <tbody>
                         <jsp:useBean id="tps" scope="session" type="java.util.HashMap"/>
                         <c:if test="${tps.get(week.key).size() != 0}">
-                            <c:forEach  var="tp" items="${tps.get(week.key)}">
+                            <c:forEach var="tp" items="${tps.get(week.key)}">
                                 <tr>
                                     <td>
                                         <a href="<c:out value="${tp.key}"/>" target="_blank">

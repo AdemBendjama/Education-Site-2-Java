@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <title>E-learning</title>
     <c:if test="${session!=null}">
-        <jsp:include page="./login"/>
+        <jsp:include page="/login"/>
     </c:if>
     <link rel="stylesheet" href="index.css"/>
     <link rel="stylesheet" href="css/footer.css"/>
