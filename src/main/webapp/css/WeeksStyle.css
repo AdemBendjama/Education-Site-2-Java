@@ -1,0 +1,29 @@
+/* Teacher Weeks Add,update,delete support buttons */
+.form{
+    max-width: 600px ;
+}
+.weeks-buttons-container{
+    display: flex;
+    justify-content: space-between;
+}
+
+.weeks-button {
+    background: #037f39;
+    border: none;
+    padding: 10px 20px 10px 20px;
+    border-bottom: 3px solid #037334;
+    border-radius: 3px;
+    color: #f2f7ff;
+    font-family: 'Poppins', sans-serif;
+
+}
+
+.weeks-button:hover {
+    background: #038b3e;
+    color: #fff;
+    cursor: pointer;
+}
+
+.weeks-button:focus {
+    outline: none;
+}

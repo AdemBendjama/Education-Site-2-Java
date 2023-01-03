@@ -4,12 +4,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>E-Learning</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"/>
     <link rel="preconnect" href="https://fonts.googleapis.com"/>
@@ -17,21 +17,20 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap" rel="stylesheet"/>
 
     <link rel="icon" href="../../resources/Logo-04-removebg-preview.png">
-    <link rel="stylesheet" href="../../css/footer.css"/>
-    <link rel="stylesheet" href="../../css/header.css"/>
-    <link rel="stylesheet" href="../../css/sidebar.css"/>
-    <link rel="stylesheet" href="../../css/UsersStyle.css"/>
-    <link rel="stylesheet" href="../../css/FormStyle.css"/>
+    <link rel='stylesheet' href='../../css/header.css'>
+    <link rel="stylesheet" href="../../css/footer.css">
+    <link rel="stylesheet" href="../../css/sidebar.css">
+    <link rel="stylesheet" href="../../css/UsersStyle.css">
+    <link rel="stylesheet" href="../../css/FormStyle.css">
+    <link rel="stylesheet" href="../../css/WeeksStyle.css">
+
 </head>
 <body>
 <div class="containers">
-
     <div class="Navbar">
-
         <div class="logo">
-            <a href="./login"><img src="../../resources/Logo-04-removebg-preview.png" alt="logo"/></a>
+            <a href="./login"><img src="../../resources/Logo-04-removebg-preview.png" alt="logo"></a>
         </div>
-
         <nav>
             <ul>
                 <li>
@@ -48,11 +47,9 @@
                 </li>
             </ul>
         </nav>
-
     </div>
 
     <div class="center-content">
-
         <div id="sidebar">
             <header>
                 <a>Menu</a>
@@ -83,42 +80,21 @@
                     </a>
                 </li>
             </ul>
+
         </div>
 
         <div class="page-content">
-            <form class="form" action="addWeek" method="post">
-                <ul>
-                    <li>
-                        <label for="add-subject">Subject</label>
-                        <select name="subject-name" id="add-subject">
-                            <jsp:useBean id="listOfSubjects" scope="session" type="java.util.List"/>
-                            <c:if test="${listOfSubjects.size()!=0}">
-                                <c:forEach var="i" begin="0" end="${listOfSubjects.size()-1}" step="1">
-                                    <option value="<c:out value="${listOfSubjects[i].name}"/>">
-                                        <c:out value="${listOfSubjects[i].name}"/>
-                                    </option>
-                                </c:forEach>
-                            </c:if>
-                        </select>
-                        <span>Enter a Subject's Name [ Required ]</span>
-                    </li>
-                    <li>
-                        <label for="add-week-start">Week Start</label>
-                        <input type="date" name="week-start" id="add-week-start" required/>
-                        <span>Start Of The Teaching Week [ Required ]</span>
-                    </li>
-                    <li>
-                        <label for="add-week-end">Week End</label>
-                        <input type="date" name="week-end" id="add-week-end" required/>
-                        <span>End Of The Teaching Week [ Required ]</span>
-                    </li>
-                    <li>
-                        <input type="submit" id="add-submit" value="Add"/>
-                    </li>
-                </ul>
-            </form>
+                <form class="form" action="" method="post">
+                        <div class="weeks-buttons-container">
+                        <input type="submit" value="Add Support" id="add-support" class="weeks-button"/>
+                        <input type="submit" value="Update Support" id="update-support" class="weeks-button"/>
+                        <input type="submit" value="Delete Support" id="delete-support" class="weeks-button"/>
+                    </div>
+                </form>
         </div>
+        
     </div>
+
 </div>
 <div class="footer">
     <div>
@@ -129,12 +105,13 @@
             Algerie La Nouvelle Ville Ali Mendjeli, 25016
         </p>
     </div>
-    <img src="../../resources/Logo-04-removebg-preview.png" alt="University Logo"/>
+    <img src="../../resources/Logo-04-removebg-preview.png" alt="University Logo">
     <div>
         <p>Phone :031 77 50 27</p>
         <p>Contact webmaster@univ-constantine2</p>
     </div>
 </div>
 
+<script src="../../scripts/redirectToSubjectPage.js"></script>
 </body>
 </html>
