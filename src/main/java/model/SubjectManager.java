@@ -89,10 +89,10 @@ public class SubjectManager {
     }
 
     //
-    public HashMap<Integer,String> getWeeks(String subjectName) {
+    public HashMap<Integer, String> getWeeks(String subjectName) {
         //
         subjectName = subjectName.trim();
-        HashMap<Integer,String> weeksMap = new HashMap<>();
+        HashMap<Integer, String> weeksMap = new HashMap<>();
 
         try {
             preparedStatement = connection.prepareStatement("""
@@ -116,9 +116,9 @@ public class SubjectManager {
                 String monthEnd = weekEnd.getMonth().toString().substring(0, 3);
 
                 //
-                String week = monthStart + " "+dayStart+" -> "+ monthEnd+" "+dayEnd;
+                String week = monthStart + " " + dayStart + " -> " + monthEnd + " " + dayEnd;
 
-                weeksMap.put(weekID,week);
+                weeksMap.put(weekID, week);
 
             }
         } catch (SQLException e) {
@@ -129,7 +129,7 @@ public class SubjectManager {
     }
 
     //
-    public List<Integer> getWeekID(String subjectName){
+    public List<Integer> getWeekID(String subjectName) {
         //
         subjectName = subjectName.trim();
         List<Integer> weekIDs = new ArrayList<>();
@@ -156,15 +156,105 @@ public class SubjectManager {
         return weekIDs;
     }
 
+    public boolean checkWeek(String subjectName, String weekStart, String weekEnd){
+        //
+        subjectName = subjectName.trim();
+        weekStart = weekStart.trim();
+        weekEnd = weekEnd.trim();
 
+        try {
+            //
+            preparedStatement = connection.prepareStatement("""
+                    Select * from teachingWeeks
+                    where subjects = ?
+                    AND week_start=?
+                    AND week_end=?""");
 
+            preparedStatement.setString(1,subjectName);
+            preparedStatement.setString(2,weekStart);
+            preparedStatement.setString(3,weekEnd);
 
+            ResultSet resultSet = preparedStatement.executeQuery();
+            return resultSet.next();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    //
+    public boolean addWeek(String subjectName, String weekStart, String weekEnd) {
+        //
+        subjectName = subjectName.trim();
+        weekStart = weekStart.trim();
+        weekEnd = weekEnd.trim();
+
+        //
+        if(!checkWeek(subjectName,weekStart,weekEnd)){
+            return false;
+        }
+
+        try {
+            //
+            preparedStatement = connection.prepareStatement("""
+                    Insert into teachingWeeks
+                    (subjects,week_start,week_end)
+                    Values (?,?,?)""");
+
+            preparedStatement.setString(1,subjectName);
+            preparedStatement.setString(2,weekStart);
+            preparedStatement.setString(3,weekEnd);
+
+            preparedStatement.executeUpdate();
+            return true;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+
+    }
+
+    //
+    public boolean deleteWeek(String subjectName, String weekStart, String weekEnd) {
+        //
+        subjectName = subjectName.trim();
+        weekStart = weekStart.trim();
+        weekEnd = weekEnd.trim();
+
+        //
+        if(!checkWeek(subjectName,weekStart,weekEnd)){
+            return false;
+        }
+
+        try {
+            //
+            preparedStatement = connection.prepareStatement("""
+                    Delete from teachingWeeks
+                    where subjects = ?
+                    AND week_start=?
+                    AND week_end=?""");
+
+            preparedStatement.setString(1,subjectName);
+            preparedStatement.setString(2,weekStart);
+            preparedStatement.setString(3,weekEnd);
+
+            preparedStatement.executeUpdate();
+            return true;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+
+    }
 
 
     //
-    public HashMap<String,String> getCour(int weekID) {
+    public HashMap<String, String> getCour(int weekID) {
         //
-        HashMap<String,String> cours = new HashMap<>();
+        HashMap<String, String> cours = new HashMap<>();
 
         try {
             preparedStatement = connection.prepareStatement("""
@@ -180,7 +270,7 @@ public class SubjectManager {
                 String courLink = resultSet.getString(1);
                 String courName = resultSet.getString(2);
 
-                cours.put(courLink,courName);
+                cours.put(courLink, courName);
 
             }
         } catch (SQLException e) {
@@ -191,16 +281,16 @@ public class SubjectManager {
     }
 
     //
-    public HashMap<Integer,HashMap<String,String>> getCours(List<Integer> weekIDs) {
+    public HashMap<Integer, HashMap<String, String>> getCours(List<Integer> weekIDs) {
         //
-        HashMap<Integer,HashMap<String,String>> cours = new HashMap<>();
-        HashMap<String,String> cour ;
+        HashMap<Integer, HashMap<String, String>> cours = new HashMap<>();
+        HashMap<String, String> cour;
 
         //
         for (Integer weekID : weekIDs) {
             //
             cour = this.getCour(weekID);
-            cours.put(weekID,cour);
+            cours.put(weekID, cour);
 
         }
 
@@ -208,9 +298,9 @@ public class SubjectManager {
     }
 
     //
-    public HashMap<String,String> getTD(int weekID) {
+    public HashMap<String, String> getTD(int weekID) {
         //
-        HashMap<String,String> tds = new HashMap<>();
+        HashMap<String, String> tds = new HashMap<>();
 
         try {
             preparedStatement = connection.prepareStatement("""
@@ -226,7 +316,7 @@ public class SubjectManager {
                 String tdLink = resultSet.getString(1);
                 String tdName = resultSet.getString(2);
 
-                tds.put(tdLink,tdName);
+                tds.put(tdLink, tdName);
 
             }
         } catch (SQLException e) {
@@ -237,16 +327,16 @@ public class SubjectManager {
     }
 
     //
-    public HashMap<Integer,HashMap<String,String>> getTDs(List<Integer> weekIDs) {
+    public HashMap<Integer, HashMap<String, String>> getTDs(List<Integer> weekIDs) {
         //
-        HashMap<Integer,HashMap<String,String>> tds = new HashMap<>();
-        HashMap<String,String> td ;
+        HashMap<Integer, HashMap<String, String>> tds = new HashMap<>();
+        HashMap<String, String> td;
 
         //
         for (Integer weekID : weekIDs) {
             //
             td = this.getTD(weekID);
-            tds.put(weekID,td);
+            tds.put(weekID, td);
 
         }
 
@@ -254,9 +344,9 @@ public class SubjectManager {
     }
 
     //
-    public HashMap<String,String> getTP(int weekID) {
+    public HashMap<String, String> getTP(int weekID) {
         //
-        HashMap<String,String> tps = new HashMap<>();
+        HashMap<String, String> tps = new HashMap<>();
 
         try {
             preparedStatement = connection.prepareStatement("""
@@ -272,7 +362,7 @@ public class SubjectManager {
                 String tpLink = resultSet.getString(1);
                 String tpName = resultSet.getString(2);
 
-                tps.put(tpLink,tpName);
+                tps.put(tpLink, tpName);
 
             }
         } catch (SQLException e) {
@@ -283,16 +373,16 @@ public class SubjectManager {
     }
 
     //
-    public HashMap<Integer,HashMap<String,String>> getTPs(List<Integer> weekIDs) {
+    public HashMap<Integer, HashMap<String, String>> getTPs(List<Integer> weekIDs) {
         //
-        HashMap<Integer,HashMap<String,String>> tps = new HashMap<>();
-        HashMap<String,String> tp ;
+        HashMap<Integer, HashMap<String, String>> tps = new HashMap<>();
+        HashMap<String, String> tp;
 
         //
         for (Integer weekID : weekIDs) {
             //
             tp = this.getTP(weekID);
-            tps.put(weekID,tp);
+            tps.put(weekID, tp);
 
         }
 
