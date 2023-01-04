@@ -129,7 +129,41 @@ public class SubjectManager {
     }
 
     //
-    public List<Integer> getWeekID(String subjectName) {
+    public int getWeekID(String subjectName, String weekStart, String weekEnd) {
+        //
+        subjectName = subjectName.trim();
+        weekStart = weekStart.trim();
+        weekEnd = weekEnd.trim();
+
+        int weekID = 0;
+
+        try {
+            preparedStatement = connection.prepareStatement("""
+                    select id from teachingWeeks
+                    where subjects =?
+                    AND week_start =?
+                    AND week_end=?
+                    LIMIT 1""");
+
+            preparedStatement.setString(1, subjectName);
+            preparedStatement.setString(2, weekStart);
+            preparedStatement.setString(3, weekEnd);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            resultSet.next();
+
+            //
+            weekID = resultSet.getInt(1);
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return weekID;
+    }
+
+    //
+    public List<Integer> getWeekIDs(String subjectName) {
         //
         subjectName = subjectName.trim();
         List<Integer> weekIDs = new ArrayList<>();
@@ -156,7 +190,7 @@ public class SubjectManager {
         return weekIDs;
     }
 
-    public boolean checkWeek(String subjectName, String weekStart, String weekEnd){
+    public boolean checkWeek(String subjectName, String weekStart, String weekEnd) {
         //
         subjectName = subjectName.trim();
         weekStart = weekStart.trim();
@@ -170,9 +204,93 @@ public class SubjectManager {
                     AND week_start=?
                     AND week_end=?""");
 
-            preparedStatement.setString(1,subjectName);
-            preparedStatement.setString(2,weekStart);
-            preparedStatement.setString(3,weekEnd);
+            preparedStatement.setString(1, subjectName);
+            preparedStatement.setString(2, weekStart);
+            preparedStatement.setString(3, weekEnd);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+            return resultSet.next();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    //
+    public boolean checkDesc(int weekID) {
+        //
+        try {
+            //
+            preparedStatement = connection.prepareStatement("""
+                    Select * from subjectDesc
+                    where teachingWeek = ?
+                    LIMIT 1""");
+
+            preparedStatement.setInt(1, weekID);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+            return resultSet.next();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    //
+    public boolean checkCour(String link) {
+        //
+        try {
+            //
+            preparedStatement = connection.prepareStatement("""
+                    Select * from subjectCour
+                    where cour_link = ?
+                    LIMIT 1""");
+
+            preparedStatement.setString(1, link);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+            return resultSet.next();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    //
+    public boolean checkTD(String link) {
+        //
+        try {
+            //
+            preparedStatement = connection.prepareStatement("""
+                    Select * from subjectTD
+                    where td_link = ?
+                    LIMIT 1""");
+
+            preparedStatement.setString(1, link);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+            return resultSet.next();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    //
+    public boolean checkTP(String link) {
+        //
+        try {
+            //
+            preparedStatement = connection.prepareStatement("""
+                    Select * from subjectTP
+                    where tp_link = ?
+                    LIMIT 1""");
+
+            preparedStatement.setString(1, link);
 
             ResultSet resultSet = preparedStatement.executeQuery();
             return resultSet.next();
@@ -191,7 +309,7 @@ public class SubjectManager {
         weekEnd = weekEnd.trim();
 
         //
-        if(!checkWeek(subjectName,weekStart,weekEnd)){
+        if (checkWeek(subjectName, weekStart, weekEnd)) {
             return false;
         }
 
@@ -202,9 +320,9 @@ public class SubjectManager {
                     (subjects,week_start,week_end)
                     Values (?,?,?)""");
 
-            preparedStatement.setString(1,subjectName);
-            preparedStatement.setString(2,weekStart);
-            preparedStatement.setString(3,weekEnd);
+            preparedStatement.setString(1, subjectName);
+            preparedStatement.setString(2, weekStart);
+            preparedStatement.setString(3, weekEnd);
 
             preparedStatement.executeUpdate();
             return true;
@@ -224,7 +342,7 @@ public class SubjectManager {
         weekEnd = weekEnd.trim();
 
         //
-        if(!checkWeek(subjectName,weekStart,weekEnd)){
+        if (!checkWeek(subjectName, weekStart, weekEnd)) {
             return false;
         }
 
@@ -236,9 +354,9 @@ public class SubjectManager {
                     AND week_start=?
                     AND week_end=?""");
 
-            preparedStatement.setString(1,subjectName);
-            preparedStatement.setString(2,weekStart);
-            preparedStatement.setString(3,weekEnd);
+            preparedStatement.setString(1, subjectName);
+            preparedStatement.setString(2, weekStart);
+            preparedStatement.setString(3, weekEnd);
 
             preparedStatement.executeUpdate();
             return true;
@@ -250,6 +368,154 @@ public class SubjectManager {
 
     }
 
+
+    //
+    public boolean changeDesc(int weekID, String description) {
+        //
+        description = description.trim();
+
+        if (description.isBlank()) {
+            return false;
+        }
+
+        //
+        if (!checkDesc(weekID)) {
+
+            try {
+                //
+                preparedStatement = connection.prepareStatement("""
+                        Insert into subjectDesc
+                        (teachingWeek,descriptionInfo)
+                        Values (?,?)""");
+
+                preparedStatement.setInt(1, weekID);
+                preparedStatement.setString(2, description);
+
+                preparedStatement.executeUpdate();
+                return true;
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+                return false;
+            }
+        } else {
+            try {
+                //
+                preparedStatement = connection.prepareStatement("""
+                        Update subjectDesc
+                        Set descriptionInfo=?
+                        Where teachingWeek =?
+                        """);
+
+                preparedStatement.setString(1, description);
+                preparedStatement.setInt(2, weekID);
+
+                preparedStatement.executeUpdate();
+                return true;
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+                return false;
+            }
+        }
+
+    }
+
+    //
+    public boolean addCour(int weekID, String link, String name) {
+        //
+        link = link.trim();
+        name = name.trim();
+
+        //
+        if (checkCour(link)) {
+            return false;
+        }
+
+        try {
+            //
+            preparedStatement = connection.prepareStatement("""
+                    Insert into subjectCour
+                    (cour_link,cour_name,teachingWeek)
+                    Values (?,?,?)""");
+
+            preparedStatement.setString(1, link);
+            preparedStatement.setString(2, name);
+            preparedStatement.setInt(3, weekID);
+
+            preparedStatement.executeUpdate();
+            return true;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+
+    }
+
+    //
+    public boolean addTD(int weekID, String link, String name) {
+        //
+        link = link.trim();
+        name = name.trim();
+
+        //
+        if (checkTD(link)) {
+            return false;
+        }
+
+        try {
+            //
+            preparedStatement = connection.prepareStatement("""
+                    Insert into subjectTD
+                    (td_link,td_name,teachingWeek)
+                    Values (?,?,?)""");
+
+            preparedStatement.setString(1, link);
+            preparedStatement.setString(2, name);
+            preparedStatement.setInt(3, weekID);
+
+            preparedStatement.executeUpdate();
+            return true;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+
+    }
+
+    //
+    public boolean addTP(int weekID, String link, String name) {
+        //
+        link = link.trim();
+        name = name.trim();
+
+        //
+        if (checkTP(link)) {
+            return false;
+        }
+
+        try {
+            //
+            preparedStatement = connection.prepareStatement("""
+                    Insert into subjectTP
+                    (tp_link,tp_name,teachingWeek)
+                    Values (?,?,?)""");
+
+            preparedStatement.setString(1, link);
+            preparedStatement.setString(2, name);
+            preparedStatement.setInt(3, weekID);
+
+            preparedStatement.executeUpdate();
+            return true;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+
+    }
 
     //
     public HashMap<String, String> getCour(int weekID) {

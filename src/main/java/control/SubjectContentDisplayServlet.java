@@ -46,7 +46,7 @@ public class SubjectContentDisplayServlet extends HttpServlet {
             HashMap<Integer,String> weeks = subjectManager.getWeeks(subjectName);
 
             //
-            List<Integer> weekIDs = subjectManager.getWeekID(subjectName);
+            List<Integer> weekIDs = subjectManager.getWeekIDs(subjectName);
             HashMap<Integer,HashMap<String,String>> cours = subjectManager.getCours(weekIDs);
             HashMap<Integer,HashMap<String,String>> tds = subjectManager.getTDs(weekIDs);
             HashMap<Integer,HashMap<String,String>> tps = subjectManager.getTPs(weekIDs);
