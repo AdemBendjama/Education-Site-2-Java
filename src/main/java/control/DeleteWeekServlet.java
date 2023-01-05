@@ -40,7 +40,8 @@ public class DeleteWeekServlet extends HttpServlet {
             String weekEnd = request.getParameter("week-end");
 
             //
-            boolean deleted = subjectManager.deleteWeek(subjectName, weekStart, weekEnd);
+            int weekID = subjectManager.getWeekID(subjectName, weekStart, weekEnd);
+            boolean deleted = subjectManager.deleteWeek(weekID);
 
             if (deleted) {
                 //

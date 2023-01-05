@@ -335,28 +335,126 @@ public class SubjectManager {
     }
 
     //
-    public boolean deleteWeek(String subjectName, String weekStart, String weekEnd) {
+    public boolean deleteWeek(int weekID) {
         //
-        subjectName = subjectName.trim();
-        weekStart = weekStart.trim();
-        weekEnd = weekEnd.trim();
+        if (weekID == 0) {
+            return false;
+        }
 
         //
-        if (!checkWeek(subjectName, weekStart, weekEnd)) {
+        this.deleteCours(weekID);
+        this.deleteTDs(weekID);
+        this.deleteTPs(weekID);
+        this.deleteDescs(weekID);
+
+
+        try {
+            //
+            preparedStatement = connection.prepareStatement("""
+                    Delete from teachingWeeks
+                    where id=?""");
+
+            preparedStatement.setInt(1, weekID);
+
+            preparedStatement.executeUpdate();
+            return true;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+
+    }
+
+    //
+    public boolean deleteCours(int weekID) {
+        //
+        if (weekID == 0) {
             return false;
         }
 
         try {
             //
             preparedStatement = connection.prepareStatement("""
-                    Delete from teachingWeeks
-                    where subjects = ?
-                    AND week_start=?
-                    AND week_end=?""");
+                    Delete from subjectCour
+                    where teachingWeek = ?""");
 
-            preparedStatement.setString(1, subjectName);
-            preparedStatement.setString(2, weekStart);
-            preparedStatement.setString(3, weekEnd);
+            preparedStatement.setInt(1, weekID);
+
+            preparedStatement.executeUpdate();
+            return true;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+
+    }
+
+    //
+    public boolean deleteTDs(int weekID) {
+        //
+        if (weekID == 0) {
+            return false;
+        }
+
+        try {
+            //
+            preparedStatement = connection.prepareStatement("""
+                    Delete from subjectTD
+                    where teachingWeek = ?""");
+
+            preparedStatement.setInt(1, weekID);
+
+            preparedStatement.executeUpdate();
+            return true;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+
+    }
+
+    //
+    public boolean deleteTPs(int weekID) {
+        //
+        if (weekID == 0) {
+            return false;
+        }
+
+        try {
+            //
+            preparedStatement = connection.prepareStatement("""
+                    Delete from subjectTP
+                    where teachingWeek = ?""");
+
+            preparedStatement.setInt(1, weekID);
+
+            preparedStatement.executeUpdate();
+            return true;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+
+    }
+
+    //
+    public boolean deleteDescs(int weekID) {
+        //
+        if (weekID == 0) {
+            return false;
+        }
+
+        try {
+            //
+            preparedStatement = connection.prepareStatement("""
+                    Delete from subjectDesc
+                    where teachingWeek = ?""");
+
+            preparedStatement.setInt(1, weekID);
 
             preparedStatement.executeUpdate();
             return true;
@@ -543,15 +641,15 @@ public class SubjectManager {
     }
 
     //
-    public HashMap<Integer,String> getDescs(List<Integer> weekIDs) {
+    public HashMap<Integer, String> getDescs(List<Integer> weekIDs) {
         //
-        HashMap<Integer,String> descriptions = new HashMap<>();
+        HashMap<Integer, String> descriptions = new HashMap<>();
 
         //
-        for(Integer weekID:weekIDs){
+        for (Integer weekID : weekIDs) {
             //
             String description = this.getDesc(weekID);
-            descriptions.put(weekID,description);
+            descriptions.put(weekID, description);
         }
 
         return descriptions;

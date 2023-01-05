@@ -89,8 +89,8 @@
                 <c:forEach var="week" items="${weeks}">
 
                     <h3><c:out value="${week.value}"/></h3>
-                    <p><jsp:useBean id="description" scope="session" type="java.util.HashMap"/>
-                    <c:out value="${description.get(week.key)}"/> </p>
+                    <p><jsp:useBean id="descriptions" scope="session" type="java.util.HashMap"/>
+                    <c:out value="${descriptions.get(week.key)}"/> </p>
                     <table class="table table-dark">
 
                         <thead>
