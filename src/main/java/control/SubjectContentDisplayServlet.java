@@ -40,17 +40,18 @@ public class SubjectContentDisplayServlet extends HttpServlet {
         SubjectManager subjectManager = new SubjectManager();
 
         //
-        if (session.getAttribute("teacher") != null) {
+        if (session.getAttribute("teacher") != null
+                || session.getAttribute("student") != null) {
             //
             String subjectName = request.getParameter("subject-name");
-            HashMap<Integer,String> weeks = subjectManager.getWeeks(subjectName);
+            HashMap<Integer, String> weeks = subjectManager.getWeeks(subjectName);
 
             //
             List<Integer> weekIDs = subjectManager.getWeekIDs(subjectName);
-            HashMap<Integer,HashMap<String,String>> cours = subjectManager.getCours(weekIDs);
-            HashMap<Integer,HashMap<String,String>> tds = subjectManager.getTDs(weekIDs);
-            HashMap<Integer,HashMap<String,String>> tps = subjectManager.getTPs(weekIDs);
-            HashMap<Integer,String> descriptions = subjectManager.getDescs(weekIDs);
+            HashMap<Integer, HashMap<String, String>> cours = subjectManager.getCours(weekIDs);
+            HashMap<Integer, HashMap<String, String>> tds = subjectManager.getTDs(weekIDs);
+            HashMap<Integer, HashMap<String, String>> tps = subjectManager.getTPs(weekIDs);
+            HashMap<Integer, String> descriptions = subjectManager.getDescs(weekIDs);
 
             session.setAttribute("subjectName", subjectName);
             session.setAttribute("weeks", weeks);
@@ -59,8 +60,17 @@ public class SubjectContentDisplayServlet extends HttpServlet {
             session.setAttribute("tps", tps);
             session.setAttribute("descriptions", descriptions);
 
-            dispatcher = request.getRequestDispatcher("/WEB-INF/Teacher/TeacherModuleDisplay.jsp");
-            dispatcher.forward(request, response);
+            if (session.getAttribute("teacher") != null) {
+                //
+                dispatcher = request.getRequestDispatcher("/WEB-INF/Teacher/TeacherModuleDisplay.jsp");
+                dispatcher.forward(request, response);
+
+            } else if (session.getAttribute("student") != null) {
+                //
+                dispatcher = request.getRequestDispatcher("/WEB-INF/Student/StudentModuleDisplay.jsp");
+                dispatcher.forward(request, response);
+
+            }
 
         } else {
             //

@@ -42,6 +42,7 @@ create table teacherSubjects(
     foreign key (subjects) references subjects(name)
 );
 
+
 Create table teachingWeeks (
 	id int auto_increment primary key,
     subjects varchar(10),
@@ -81,6 +82,13 @@ create table subjectTP (
     foreign key (teachingWeek) references teachingWeeks(id)
 );
 
+create table studentSubjects(
+	email varchar(40) ,
+    subjects varchar(10) ,
+    primary key (email,subjects),
+    foreign key (email) references users(user_email) ,
+    foreign key (subjects) references subjects(name)
+);
 
 INSERT INTO `TQL_APP_BD`.`teacherSubjects` (`email`, `subjects`) VALUES ('marbel@gmail.com', 'DAC');
 INSERT INTO `TQL_APP_BD`.`teacherSubjects` (`email`, `subjects`) VALUES ('marbel@gmail.com', 'AO');
@@ -110,5 +118,8 @@ INSERT INTO `TQL_APP_BD`.`subjectCour` (`cour_link`, `cour_name`, `teachingWeek`
 INSERT INTO `TQL_APP_BD`.`subjectCour` (`cour_link`, `cour_name`, `teachingWeek`) VALUES ('https://drive.google.com/file/d/1bycy9QP7BMR6dKOsdIDLjbQf9FhnOuoh/view?usp=sharing', 'Cour 02 (Complex Systems).pdf', '4');
 
 INSERT INTO `TQL_APP_BD`.`subjectTP` (`tp_link`, `tp_name`, `teachingWeek`) VALUES ('https://drive.google.com/file/d/17KejmFhS2Ch1UUCZ9vfFyWDuI9R8jbOP/view', 'TP 01', '4');
+
+INSERT INTO `TQL_APP_BD`.`studentSubjects` (`email`, `subjects`) VALUES ('adam@gmail.com', 'AO');
+INSERT INTO `TQL_APP_BD`.`studentSubjects` (`email`, `subjects`) VALUES ('adam@gmail.com', 'DAC');
 
 

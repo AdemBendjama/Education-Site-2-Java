@@ -41,6 +41,15 @@ public class SubjectListServlet extends HttpServlet {
             dispatcher = request.getRequestDispatcher("/WEB-INF/Teacher/TeacherMain.jsp");
             dispatcher.forward(request, response);
 
+        } else if (session.getAttribute("student") != null) {
+            //
+            User student = (User) session.getAttribute("student");
+            List<Subject> listOfSubjects = subjectManager.getStudentSubjects(student.getEmail());
+            session.setAttribute("listOfSubjects", listOfSubjects);
+
+            dispatcher = request.getRequestDispatcher("/WEB-INF/Student/StudentMain.jsp");
+            dispatcher.forward(request, response);
+
         } else {
             //
             LoginServlet loginServlet = new LoginServlet();
@@ -51,7 +60,7 @@ public class SubjectListServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        this.doGet(request,response);
+        this.doGet(request, response);
     }
 
 }

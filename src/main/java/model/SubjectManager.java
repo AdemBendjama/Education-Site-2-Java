@@ -89,6 +89,34 @@ public class SubjectManager {
     }
 
     //
+    public List<Subject> getStudentSubjects(String studentEmail) {
+        //
+        studentEmail = studentEmail.trim();
+        List<Subject> subjects = new ArrayList<>();
+        try {
+            preparedStatement = connection.prepareStatement("""
+                    select * from subjects,users,studentSubjects
+                    where studentSubjects.email = users.user_email
+                    and   subjects.name = studentSubjects.subjects
+                    and studentSubjects.email = ?""");
+
+            preparedStatement.setString(1, studentEmail);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                //
+                Subject subject = new Subject(resultSet.getString(1), resultSet.getString(2));
+
+                subjects.add(subject);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return subjects;
+    }
+
+    //
     public HashMap<Integer, String> getWeeks(String subjectName) {
         //
         subjectName = subjectName.trim();

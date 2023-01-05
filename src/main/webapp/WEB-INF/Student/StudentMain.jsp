@@ -17,8 +17,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap" rel="stylesheet"/>
 
     <link rel="icon" href="../../resources/Logo-04-removebg-preview.png">
-    <link rel="stylesheet" href="../../css/footer.css">
     <link rel='stylesheet' href='../../css/header.css'>
+    <link rel="stylesheet" href="../../css/footer.css">
     <link rel="stylesheet" href="../../css/sidebar.css">
     <link rel="stylesheet" href="../../css/UsersStyle.css">
 
@@ -55,8 +55,8 @@
             <ul class="nav">
                 <li>
                     <img src="../../resources/list-2-24.png" alt="list-users grey icon">
-                    <a href="StudentMain.jsp">
-                        List Modules
+                    <a href="./login">
+                        Modules
                     </a>
                 </li>
             </ul>
@@ -64,17 +64,31 @@
         </div>
 
         <div class="page-content">
-
+            <form id="subject-form" action="subject" method="post" style="display: none">
+                <label>
+                    <input type="text" name="subject-name" id="subject-name">
+                </label>
+                <input type="submit" id="subject-submit">
+            </form>
             <table class="table table-dark">
                 <thead>
                 <tr>
-                    <td>Module</td>
+                    <td>Subject</td>
+                    <td>Specialty</td>
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td><a href="StudentModuleList.jsp">DAAW</a></td>
-                </tr>
+                <jsp:useBean id="listOfSubjects" scope="session" type="java.util.List"/>
+                <c:if test="${listOfSubjects.size()!=0}">
+                    <c:forEach var="i" begin="0" end="${listOfSubjects.size()-1}" step="1">
+                        <tr>
+                            <td><a onclick="submitSubjectName('<c:out value="${listOfSubjects[i].name}"/>')">
+                                <c:out value="${listOfSubjects[i].name}"/></a>
+                            </td>
+                            <td><c:out value="${listOfSubjects[i].specialty}"/></td>
+                        </tr>
+                    </c:forEach>
+                </c:if>
                 </tbody>
             </table>
         </div>
@@ -98,5 +112,6 @@
     </div>
 </div>
 
+<script src="../../scripts/redirectToSubjectPage.js"></script>
 </body>
 </html>

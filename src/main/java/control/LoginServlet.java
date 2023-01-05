@@ -110,8 +110,8 @@ public class LoginServlet extends HttpServlet {
                     session.setAttribute("session", "student");
 
                     // Forwards to student homepage
-                    dispatcher = request.getRequestDispatcher("/WEB-INF/Student/StudentMain.jsp");
-                    dispatcher.forward(request, response);
+                    SubjectListServlet subjectListServlet = new SubjectListServlet();
+                    subjectListServlet.doGet(request, response);
                 }
 
             }
