@@ -59,6 +59,12 @@
                         Modules
                     </a>
                 </li>
+<li>
+                    <img src="../../resources/edit-profile-24.png" alt="list-users grey icon">
+                    <a href="./editProfile">
+                        Edit Profile
+                    </a>
+                </li>
                 <li>
                     <img src="../../resources/add-week-24.png" alt="list-users grey icon">
                     <a href="./addWeek">

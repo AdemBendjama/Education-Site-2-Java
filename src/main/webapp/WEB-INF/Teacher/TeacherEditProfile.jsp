@@ -64,7 +64,7 @@
                         Modules
                     </a>
                 </li>
-<li>
+                <li>
                     <img src="../../resources/edit-profile-24.png" alt="list-users grey icon">
                     <a href="./editProfile">
                         Edit Profile
@@ -92,41 +92,15 @@
         </div>
 
         <div class="page-content">
-            <form class="form" action="deleteWeek" method="post">
+            <form class="form" action="editProfile" method="post">
                 <ul>
                     <li>
-                        <label for="delete-subject">Subject</label>
-                        <select name="subject-name" id="delete-subject">
-
-                            <jsp:useBean id="listOfSubjects" scope="session" type="java.util.List"/>
-                            <c:if test="${listOfSubjects.size()!=0}">
-                                <c:forEach var="i" begin="0" end="${listOfSubjects.size()-1}" step="1">
-
-                                    <option value="<c:out value="${listOfSubjects[i].name}"/>">
-                                        <c:out value="${listOfSubjects[i].name}"/>
-                                    </option>
-
-                                </c:forEach>
-
-                            </c:if>
-                        </select>
-                        <span>Enter a Subject's Name [ Required ]</span>
+                        <label for="change-name">New Name</label>
+                        <input type="text" name="changeName" id="change-name"/>
+                        <span>Choose a New Username [ Optional ]</span>
                     </li>
-
                     <li>
-                        <label for="delete-week-start">Week Start</label>
-                        <input type="date" name="week-start" id="delete-week-start" required/>
-                        <span>Start Of The Teaching Week [ Required ]</span>
-                    </li>
-
-                    <li>
-                        <label for="delete-week-end">Week End</label>
-                        <input type="date" name="week-end" id="delete-week-end" required/>
-                        <span>End Of The Teaching Week [ Required ]</span>
-                    </li>
-
-                    <li>
-                        <input type="submit" id="delete-submit" value="Delete"/>
+                        <input type="submit" id="update-submit" value="Update"/>
                     </li>
                 </ul>
             </form>
