@@ -61,19 +61,19 @@
                     </a>
                 </li>
                 <li>
-                    <img src="../../../resources/list-2-24.png" alt="list-users grey icon">
+                    <img src="../../../resources/add-week-24.png" alt="list-users grey icon">
                     <a href="./addWeek">
                         Add Week
                     </a>
                 </li>
                 <li>
-                    <img src="../../../resources/list-2-24.png" alt="list-users grey icon">
+                    <img src="../../../resources/modify-week-24.png" alt="list-users grey icon">
                     <a href="./modifyWeek">
                         Modify Week
                     </a>
                 </li>
                 <li>
-                    <img src="../../../resources/list-2-24.png" alt="list-users grey icon">
+                    <img src="../../../resources/delete-week-24.png" alt="list-users grey icon">
                     <a href="./deleteWeek">
                         Delete Week
                     </a>
