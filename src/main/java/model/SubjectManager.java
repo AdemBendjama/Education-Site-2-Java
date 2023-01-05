@@ -518,6 +518,47 @@ public class SubjectManager {
     }
 
     //
+    public String getDesc(int weekID) {
+        //
+        String description = "";
+        try {
+            preparedStatement = connection.prepareStatement("""
+                    select descriptionInfo from subjectDesc
+                    where teachingWeek = ?""");
+
+            preparedStatement.setInt(1, weekID);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+            resultSet.next();
+
+            //
+            description = resultSet.getString(1);
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return description;
+    }
+
+    //
+    public HashMap<Integer,String> getDescs(List<Integer> weekIDs) {
+        //
+        HashMap<Integer,String> descriptions = new HashMap<>();
+
+        //
+        for(Integer weekID:weekIDs){
+            //
+            String description = this.getDesc(weekID);
+            descriptions.put(weekID,description);
+        }
+
+        return descriptions;
+    }
+
+
+    //
     public HashMap<String, String> getCour(int weekID) {
         //
         HashMap<String, String> cours = new HashMap<>();

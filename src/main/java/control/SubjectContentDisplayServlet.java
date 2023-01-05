@@ -50,12 +50,14 @@ public class SubjectContentDisplayServlet extends HttpServlet {
             HashMap<Integer,HashMap<String,String>> cours = subjectManager.getCours(weekIDs);
             HashMap<Integer,HashMap<String,String>> tds = subjectManager.getTDs(weekIDs);
             HashMap<Integer,HashMap<String,String>> tps = subjectManager.getTPs(weekIDs);
+            HashMap<Integer,String> descriptions = subjectManager.getDescs(weekIDs);
 
             session.setAttribute("subjectName", subjectName);
             session.setAttribute("weeks", weeks);
             session.setAttribute("cours", cours);
             session.setAttribute("tds", tds);
             session.setAttribute("tps", tps);
+            session.setAttribute("descriptions", descriptions);
 
             dispatcher = request.getRequestDispatcher("/WEB-INF/Teacher/TeacherModuleDisplay.jsp");
             dispatcher.forward(request, response);
