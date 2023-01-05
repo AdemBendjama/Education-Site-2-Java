@@ -942,4 +942,98 @@ public class SubjectManager {
     }
 
 
+    //
+    public boolean deleteCour(int weekID, String link) {
+        //
+        if (weekID == 0) {
+            return false;
+        }
+
+        //
+        if (checkCour(link)) {
+            //
+            try {
+                preparedStatement = connection.prepareStatement("""
+                        delete from subjectCour
+                        where cour_link=?""");
+
+                preparedStatement.setString(1,link);
+
+                preparedStatement.executeUpdate();
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+
+        } else {
+            return false;
+        }
+        //
+        return true;
+    }
+
+    //
+    public boolean deleteTD(int weekID, String link) {
+        //
+        if (weekID == 0) {
+            return false;
+        }
+
+        //
+        if (checkTD(link)) {
+            //
+            try {
+                preparedStatement = connection.prepareStatement("""
+                        delete from subjectTD
+                        where td_link=?""");
+
+                preparedStatement.setString(1,link);
+
+                preparedStatement.executeUpdate();
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+
+        } else {
+            return false;
+        }
+        //
+        return true;
+    }
+
+    //
+    public boolean deleteTP(int weekID, String link) {
+        //
+        if (weekID == 0) {
+            return false;
+        }
+
+        //
+        if (checkTP(link)) {
+            //
+            try {
+                preparedStatement = connection.prepareStatement("""
+                        delete from subjectTP
+                        where tp_link=?""");
+
+                preparedStatement.setString(1,link);
+
+                preparedStatement.executeUpdate();
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+
+        } else {
+            return false;
+        }
+        //
+        return true;
+    }
+
+
 }

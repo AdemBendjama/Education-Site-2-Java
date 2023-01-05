@@ -33,7 +33,6 @@ public class AddContentServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher dispatcher;
         HttpSession session = request.getSession();
         SubjectManager subjectManager = new SubjectManager();
 

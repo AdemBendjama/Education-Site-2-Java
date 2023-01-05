@@ -55,13 +55,13 @@ public class UpdateContentServlet extends HttpServlet {
             subjectManager.changeDesc(weekID, description);
 
             //
-            boolean added;
+            boolean updated;
             switch (type) {
                 case "cour" -> {
                     //
-                    added = subjectManager.updateCour(weekID, contentLink, newLink, newName);
+                    updated = subjectManager.updateCour(weekID, contentLink, newLink, newName);
 
-                    if (added) {
+                    if (updated) {
                         //
                         LoginServlet loginServlet = new LoginServlet();
                         loginServlet.doGet(request, response);
@@ -72,8 +72,8 @@ public class UpdateContentServlet extends HttpServlet {
                 }
                 case "td" -> {
                     //
-                    added = subjectManager.updateTD(weekID, contentLink, newLink, newName);
-                    if (added) {
+                    updated = subjectManager.updateTD(weekID, contentLink, newLink, newName);
+                    if (updated) {
                         //
                         LoginServlet loginServlet = new LoginServlet();
                         loginServlet.doGet(request, response);
@@ -83,9 +83,9 @@ public class UpdateContentServlet extends HttpServlet {
                 }
                 case "tp" -> {
                     //
-                    added = subjectManager.updateTP(weekID, contentLink, newLink, newName);
+                    updated = subjectManager.updateTP(weekID, contentLink, newLink, newName);
 
-                    if (added) {
+                    if (updated) {
                         //
                         LoginServlet loginServlet = new LoginServlet();
                         loginServlet.doGet(request, response);
