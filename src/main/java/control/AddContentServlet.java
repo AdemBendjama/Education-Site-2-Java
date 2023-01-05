@@ -52,7 +52,7 @@ public class AddContentServlet extends HttpServlet {
             subjectManager.changeDesc(weekID,description);
 
             //
-            boolean added = false;
+            boolean added ;
             switch (type) {
                 case "cour" -> {
                     //

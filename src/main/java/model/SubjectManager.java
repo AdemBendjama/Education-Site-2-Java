@@ -795,4 +795,151 @@ public class SubjectManager {
     }
 
 
+    //
+    public boolean updateCour(int weekID, String link, String new_link, String new_Name) {
+        //
+
+        if (weekID == 0) {
+            return false;
+        }
+
+        //
+        if (checkCour(link)) {
+            //
+            if (!new_link.isBlank()) {
+                //
+                try {
+                    preparedStatement = connection.prepareStatement("""
+                            update subjectCour
+                            set cour_link=?
+                            where cour_link=?""");
+
+                    preparedStatement.setString(1, new_link);
+                    preparedStatement.setString(2, link);
+                    preparedStatement.executeUpdate();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (!new_Name.isBlank()) {
+                //
+                try {
+                    preparedStatement = connection.prepareStatement("""
+                            update subjectCour
+                            set cour_name=?
+                            where cour_link=?""");
+
+                    preparedStatement.setString(1, new_Name);
+                    preparedStatement.setString(2, link);
+                    preparedStatement.executeUpdate();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+
+        return true;
+
+    }
+
+    //
+    public boolean updateTD(int weekID, String link, String new_link, String new_Name) {
+        //
+
+        if (weekID == 0) {
+            return false;
+        }
+
+
+        //
+        if (checkTD(link)) {
+            //
+            if (!new_link.isBlank()) {
+                //
+                try {
+                    preparedStatement = connection.prepareStatement("""
+                            update subjectTD
+                            set td_link=?
+                            where td_link=?""");
+
+                    preparedStatement.setString(1, new_link);
+                    preparedStatement.setString(2, link);
+                    preparedStatement.executeUpdate();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (!new_Name.isBlank()) {
+                //
+                try {
+                    preparedStatement = connection.prepareStatement("""
+                            update subjectTD
+                            set td_name=?
+                            where td_link=?""");
+
+                    preparedStatement.setString(1, new_Name);
+                    preparedStatement.setString(2, link);
+                    preparedStatement.executeUpdate();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+
+        return true;
+
+    }
+
+    //
+    public boolean updateTP(int weekID, String link, String new_link, String new_Name) {
+        //
+
+        if (weekID == 0) {
+            return false;
+        }
+
+
+        //
+        if (checkTP(link)) {
+            //
+            if (!new_link.isBlank()) {
+                //
+                try {
+                    preparedStatement = connection.prepareStatement("""
+                            update subjectTP
+                            set tp_link=?
+                            where tp_link=?""");
+
+                    preparedStatement.setString(1, new_link);
+                    preparedStatement.setString(2, link);
+                    preparedStatement.executeUpdate();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (!new_Name.isBlank()) {
+                //
+                try {
+                    preparedStatement = connection.prepareStatement("""
+                            update subjectTP
+                            set tp_name=?
+                            where tp_link=?""");
+
+                    preparedStatement.setString(1, new_Name);
+                    preparedStatement.setString(2, link);
+                    preparedStatement.executeUpdate();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+
+        return true;
+
+    }
+
+
 }
