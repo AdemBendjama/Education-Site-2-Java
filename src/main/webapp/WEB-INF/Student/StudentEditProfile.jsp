@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="../../css/footer.css">
     <link rel="stylesheet" href="../../css/sidebar.css">
     <link rel="stylesheet" href="../../css/UsersStyle.css">
+    <link rel="stylesheet" href="../../css/FormStyle.css"/>
 
 </head>
 <body>
@@ -70,33 +71,18 @@
         </div>
 
         <div class="page-content">
-            <form id="subject-form" action="subject" method="post" style="display: none">
-                <label>
-                    <input type="text" name="subject-name" id="subject-name">
-                </label>
-                <input type="submit" id="subject-submit">
+            <form class="form" action="editProfile" method="post">
+                <ul>
+                    <li>
+                        <label for="change-name">New Name</label>
+                        <input type="text" name="changeName" id="change-name"/>
+                        <span>Choose a New Username [ Optional ]</span>
+                    </li>
+                    <li>
+                        <input type="submit" id="update-submit" value="Update"/>
+                    </li>
+                </ul>
             </form>
-            <table class="table table-dark">
-                <thead>
-                <tr>
-                    <td>Subject</td>
-                    <td>Specialty</td>
-                </tr>
-                </thead>
-                <tbody>
-                <jsp:useBean id="listOfSubjects" scope="session" type="java.util.List"/>
-                <c:if test="${listOfSubjects.size()!=0}">
-                    <c:forEach var="i" begin="0" end="${listOfSubjects.size()-1}" step="1">
-                        <tr>
-                            <td><a onclick="submitSubjectName('<c:out value="${listOfSubjects[i].name}"/>')">
-                                <c:out value="${listOfSubjects[i].name}"/></a>
-                            </td>
-                            <td><c:out value="${listOfSubjects[i].specialty}"/></td>
-                        </tr>
-                    </c:forEach>
-                </c:if>
-                </tbody>
-            </table>
         </div>
 
     </div>
@@ -117,7 +103,5 @@
         <p>Contact webmaster@univ-constantine2</p>
     </div>
 </div>
-
-<script src="../../scripts/redirectToSubjectPage.js"></script>
 </body>
 </html>

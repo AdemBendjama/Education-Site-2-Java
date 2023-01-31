@@ -53,12 +53,19 @@
             </header>
             <ul class="nav">
                 <li>
-                    <img src="../../resources/list-2-24.png" alt="list-users grey icon"/>
+                    <img src="../../resources/list-2-24.png" alt="list-users grey icon">
                     <a href="./login">
                         Modules
                     </a>
                 </li>
+                <li>
+                    <img src="../../resources/edit-profile-24.png" alt="list-users grey icon">
+                    <a href="./editProfile">
+                        Edit Profile
+                    </a>
+                </li>
             </ul>
+
         </div>
 
         <div class="page-content student-module">

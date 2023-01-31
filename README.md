@@ -13,7 +13,7 @@ https://github.com/AdemBendjama/Education-Site-2-Java
 > Email : marbel@gmail.com
 > Password : marbel
 ### Student
-> Email : adambendjamaa2013@gmail.com
+> Email : adam@gmail.com
 > Password : adam
 
 # ScreenShots

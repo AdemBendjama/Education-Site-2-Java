@@ -289,4 +289,58 @@ public class UserManager {
             return false;
         }
     }
+
+    //
+    public String editProfile(String email, String newName) {
+        //
+        newName = newName.trim();
+
+        //
+        if (!newName.isBlank()) {
+            //
+            try {
+                preparedStatement = connection.prepareStatement("""
+                        update users
+                        set user_name=?
+                        where user_email=?""");
+
+                preparedStatement.setString(1, newName);
+                preparedStatement.setString(2, email);
+
+                preparedStatement.executeUpdate();
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+        }
+
+        //
+        return this.getName(email);
+
+
+    }
+
+    //
+    public String getName(String email) {
+        //
+        String name = "";
+        try {
+            preparedStatement = connection.prepareStatement("""
+                    select user_name from users
+                    where user_email=?""");
+
+            preparedStatement.setString(1, email);
+
+            ResultSet resultSet = preparedStatement.executeQuery();
+            resultSet.next();
+            //
+            name = resultSet.getString(1);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return name;
+    }
 }

@@ -1,7 +1,7 @@
 package control;
 
-import model.SubjectManager;
 import model.User;
+import model.UserManager;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -21,10 +21,16 @@ public class EditProfileServlet extends HttpServlet {
         HttpSession session = request.getSession();
 
         //
-        if (session.getAttribute("teacher") != null) {
+        if (session.getAttribute("student") != null) {
+            //
+            dispatcher = request.getRequestDispatcher("/WEB-INF/Student/StudentEditProfile.jsp");
+            dispatcher.include(request, response);
+
+        } else if (session.getAttribute("teacher") != null) {
             //
             dispatcher = request.getRequestDispatcher("/WEB-INF/Teacher/TeacherEditProfile.jsp");
             dispatcher.include(request, response);
+
         } else {
             //
             LoginServlet loginServlet = new LoginServlet();
@@ -36,15 +42,32 @@ public class EditProfileServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //
         HttpSession session = request.getSession();
-        SubjectManager subjectManager = new SubjectManager();
+        UserManager userManager = new UserManager();
 
-        if(session.getAttribute("teacher") != null){
+        if(session.getAttribute("student") != null){
+            //
+            User student = (User) session.getAttribute("student");
+            String changeName = request.getParameter("changeName");
+
+            //
+            String name = userManager.editProfile(student.getEmail(),changeName);
+            student.setUsername(name);
+
+            //
+            session.setAttribute("student",student);
+
+            //
+            LoginServlet loginServlet = new LoginServlet();
+            loginServlet.doGet(request,response);
+
+
+        }else if(session.getAttribute("teacher") != null){
             //
             User teacher = (User) session.getAttribute("teacher");
             String changeName = request.getParameter("changeName");
 
             //
-            String name = subjectManager.editProfile(teacher.getEmail(),changeName);
+            String name = userManager.editProfile(teacher.getEmail(),changeName);
             teacher.setUsername(name);
 
             //
