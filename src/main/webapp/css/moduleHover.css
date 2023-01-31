@@ -1,0 +1,10 @@
+tbody td:first-child a {
+    cursor: pointer;
+    color: #00b24d !important;
+}
+
+tbody td:first-child a:hover {
+    cursor: pointer;
+    color: #00e362 !important;
+    text-decoration: underline !important;
+}

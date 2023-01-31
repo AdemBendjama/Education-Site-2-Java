@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="../../css/footer.css">
     <link rel="stylesheet" href="../../css/sidebar.css">
     <link rel="stylesheet" href="../../css/UsersStyle.css">
+    <link rel="stylesheet" href="../../css/moduleHover.css">
 
 </head>
 <body>
