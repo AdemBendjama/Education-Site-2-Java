@@ -1,7 +1,7 @@
 # Education-Site-2-Java
--Added a back-end for this site template https://github.com/AdemBendjama/Education-Site
--E-Learning Site using simple html,css and java for the backend
--Basic CRUD implementations 
+- Added a back-end for this site template https://github.com/AdemBendjama/Education-Site
+- E-Learning Site using simple html,css and java for the backend
+- Basic CRUD implementations 
 
 ## Collaborators
 -Farouk Rahal
